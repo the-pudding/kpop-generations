@@ -1,11 +1,8 @@
 <script>
-	import { getContext } from "svelte";
-	import Footer from "$components/Footer.svelte";
-
-	// const copy = getContext("copy");
-	// const data = getContext("data");
+	import copy from "$data/copy.json";
+	import Section from "$components/Section.svelte";
 </script>
 
-<svelte:boundary onerror={(e) => console.error(e)}>
-	<!-- <Footer recirc={true} /> -->
-</svelte:boundary>
+{#each copy.sections as section}
+	<Section {...section} />
+{/each}

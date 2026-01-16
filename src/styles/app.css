@@ -6,7 +6,9 @@
 /* colors defined in variables.css */
 :root {
 	/* font */
-	--sans: "Atlas Grotesk", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+	--sans:
+		"Atlas Grotesk", -apple-system, BlinkMacSystemFont, Helvetica, Arial,
+		sans-serif;
 	--serif: "Tiempos Text", Iowan Old Style, Times New Roman, Times, serif;
 	--mono: Menlo, Consolas, Monaco, monospace;
 
@@ -17,7 +19,7 @@
 	--z-overlay: 1000;
 
 	/* presets (used in reset.css) */
-	--border-radius: 2px;
+	--border-radius: 20px;
 	--font-body: var(--serif);
 	--font-form: var(--sans);
 	--color-bg: var(--color-white);
