@@ -1,15 +1,23 @@
 <script>
-	let { id, images } = $props();
+	import { getContext, onMount } from "svelte";
+
+	let { nodeId, sectionId, images } = $props();
+	const { registerNode } = getContext("nodeRegistry");
+
+	let els = [];
 </script>
 
 <div class="images-container">
-	{#each images as { src, alt, shape, style }}
-		<div class="image-wrapper" {style}>
+	{#each images as { src, alt, shape, style }, i}
+		<div class="image-wrapper" {style} bind:this={els[i]}>
 			<img
 				class:rectangle={shape === "rectangle"}
 				class:oval={shape === "oval"}
-				src={`assets/${id}/${src}`}
+				src={`assets/${sectionId}/${src}`}
 				{alt}
+				onload={() => {
+					registerNode(`${nodeId}-${i}`, els[i]);
+				}}
 			/>
 		</div>
 	{/each}
@@ -17,7 +25,6 @@
 
 <style>
 	.images-container {
-		grid-column: 2;
 		display: flex;
 		margin: 3rem 0;
 		justify-content: center;

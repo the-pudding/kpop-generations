@@ -1,15 +1,7 @@
 <script>
-	import Text from "$components/Section.Text.svelte";
-	import Image from "$components/Section.Image.svelte";
-	import Images from "$components/Section.Images.svelte";
+	import Nodes from "$components/Nodes.svelte";
 
 	let { id, heading, years, coverImg, nodes } = $props();
-
-	const components = {
-		Text,
-		Image,
-		Images
-	};
 </script>
 
 <section {id}>
@@ -21,19 +13,11 @@
 	<h2>{heading}</h2>
 
 	<div class="grid">
-		{#each nodes as { type, value }}
-			{@const C = components[type]}
-			{#if C}
-				<C {id} {...value} />
-			{/if}
-		{/each}
+		<Nodes {id} {nodes} />
 	</div>
 </section>
 
 <style>
-	section {
-	}
-
 	.cover {
 		position: relative;
 		max-width: 842px;

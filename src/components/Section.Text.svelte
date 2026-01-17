@@ -1,8 +1,17 @@
 <script>
-	let { speaker, text, offset } = $props();
+	import { getContext, onMount } from "svelte";
+
+	let { nodeId, speaker, text, offset } = $props();
+	const { registerNode } = getContext("nodeRegistry");
+
+	let el;
+
+	onMount(() => {
+		registerNode(nodeId, el);
+	});
 </script>
 
-<div class={offset ? `text-block ${offset}` : "text-block"}>
+<div class={offset ? `text-block ${offset}` : "text-block"} bind:this={el}>
 	<div
 		class="speaker"
 		class:left={!offset || offset.startsWith("left")}
@@ -15,10 +24,9 @@
 
 <style>
 	.text-block {
-		grid-column: 2;
 		border: 2px solid black;
 		border-radius: var(--border-radius);
-		margin: 3rem 0;
+		margin: 3rem auto;
 		padding: 2rem;
 		max-width: 866px;
 		position: relative;
@@ -29,15 +37,15 @@
 	}
 
 	.left-lg {
-		transform: translateX(clamp(calc(-1 * var(--margin)), -100px, 0px));
+		transform: translateX(clamp(calc(-0.8 * var(--margin)), -100px, 0px));
 	}
 
 	.right-sm {
-		transform: translateX(clamp(calc(-0.5 * var(--margin)), 50px, 0px));
+		transform: translateX(clamp(calc(0.5 * var(--margin)), 50px, 0px));
 	}
 
 	.right-lg {
-		transform: translateX(clamp(calc(-1 * var(--margin)), 100px, 0px));
+		transform: translateX(clamp(calc(0.8 * var(--margin)), 100px, 0px));
 	}
 
 	.speaker {
