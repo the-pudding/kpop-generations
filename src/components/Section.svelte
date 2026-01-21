@@ -26,6 +26,7 @@
 	section {
 		padding: 0 2rem;
 		font-family: var(--font-body);
+		background: linear-gradient(to bottom, var(--background));
 	}
 
 	.cover {

@@ -1,5 +1,6 @@
 {
 	"first-gen": {
+		"background": "#70B0F9, #A5A5A5 50%, #F0F0F0 90%, #F1FD0F",
 		"font-heading": "ABC Maxi Plus",
 		"heading-color": "#ccffed",
 		"heading-shadow": "-1px -1px 0 #262626, 1px -1px 0 #262626, -1px 1px 0 #262626, 1px 1px 0 #262626, 4px 4px 0 rgba(38, 38, 38, 1)",
@@ -12,6 +13,6 @@
 		"years-color": "black",
 		"line-stroke": "#ccffed",
 		"border": "2px solid #262626",
-		"box-shadow": "inset -4px -4px 0 rgba(0, 0, 0, .4), inset 4px 4px rgba(255, 255, 255, 0.6)"
+		"box-shadow": "inset -4px -4px 0 rgba(0, 0, 0, .2), inset 4px 4px rgba(255, 255, 255, 0.6)"
 	}
 }
