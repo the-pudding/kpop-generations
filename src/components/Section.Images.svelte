@@ -7,11 +7,12 @@
 	let els = [];
 </script>
 
-<div class="images-container">
+<div id={nodeId} class="images-container">
 	{#each images as { src, alt, shape, style }, i}
 		<div class="image-wrapper" {style} bind:this={els[i]}>
 			<img
 				class:rectangle={shape === "rectangle"}
+				class:circle={shape === "circle"}
 				class:oval={shape === "oval"}
 				src={`assets/${sectionId}/${src}`}
 				{alt}
@@ -34,11 +35,15 @@
 		border: 2px solid black;
 	}
 
-	img.rectangle {
+	.rectangle {
 		border-radius: var(--border-radius);
 	}
 
-	img.oval {
+	.circle {
+		border-radius: 100%;
+	}
+
+	.oval {
 		border-radius: 1000px;
 	}
 </style>

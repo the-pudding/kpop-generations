@@ -1,7 +1,8 @@
 <script>
 	import Nodes from "$components/Nodes.svelte";
+	import Songs from "$components/Songs.svelte";
 
-	let { id, heading, years, coverImg, nodes } = $props();
+	let { id, heading, years, coverImg, nodes, songs } = $props();
 </script>
 
 <section {id}>
@@ -12,16 +13,26 @@
 
 	<h2>{heading}</h2>
 
-	<div class="grid">
-		<Nodes {id} {nodes} />
-	</div>
+	<Nodes {id} {nodes} />
+	<!-- <Songs {songs} /> -->
 </section>
 
 <style>
+	section {
+		padding: 0 2rem;
+	}
+
 	.cover {
 		position: relative;
 		max-width: 842px;
 		margin: 0 auto;
+	}
+
+	.cover img {
+		grid-column: 2;
+		border: 2px solid black;
+		border-radius: var(--border-radius);
+		margin: 3rem 0;
 	}
 
 	.years {
@@ -39,25 +50,6 @@
 	h2 {
 		text-align: center;
 		text-transform: uppercase;
-	}
-
-	.grid {
-		--margin: clamp(140px, 12vw, 300px);
-
-		display: grid;
-		width: 100%;
-		grid-template-columns:
-			var(--margin)
-			minmax(0, 1fr)
-			var(--margin);
-		justify-items: center;
-	}
-
-	img {
-		grid-column: 2;
-		border: 2px solid black;
-		border-radius: var(--border-radius);
-		margin: 3rem 0;
 	}
 
 	.images {

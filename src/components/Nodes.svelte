@@ -4,6 +4,7 @@
 	import Image from "$components/Section.Image.svelte";
 	import Images from "$components/Section.Images.svelte";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
+	import connections from "$data/connections.json";
 	let dimensions = new useWindowDimensions();
 
 	let { id, nodes } = $props();
@@ -14,74 +15,30 @@
 		Images
 	};
 
-	const connections = [
-		{
-			from: "first-gen-0",
-			to: "first-gen-1",
-			fromSide: "bottom",
-			toSide: "top"
-		},
-		{
-			from: "first-gen-1",
-			to: "first-gen-2-0",
-			fromSide: "bottom",
-			toSide: "top"
-		},
-		{
-			from: "first-gen-1",
-			to: "first-gen-2-1",
-			fromSide: "bottom",
-			toSide: "top"
-		},
-		{
-			from: "first-gen-1",
-			to: "first-gen-2-2",
-			fromSide: "bottom",
-			toSide: "top"
-		},
-		{
-			from: "first-gen-2-0",
-			to: "first-gen-3",
-			fromSide: "bottom",
-			toSide: "top"
-		},
-		{
-			from: "first-gen-2-1",
-			to: "first-gen-3",
-			fromSide: "bottom",
-			toSide: "top"
-		},
-		{
-			from: "first-gen-2-2",
-			to: "first-gen-3",
-			fromSide: "bottom",
-			toSide: "top"
-		},
-		{
-			from: "first-gen-3",
-			to: "first-gen-4",
-			fromSide: "right",
-			toSide: "top"
+	const curvedPath = (a, b, aSide, bSide, offset = 50) => {
+		const R = 20;
+
+		const tooClose = Math.abs(b.x - a.x) < R * 2;
+		const startX =
+			tooClose && a.x < b.x ? a.x - R * 2 : tooClose ? a.x + R * 2 : a.x;
+		const startY = a.y;
+		const endX = b.x;
+		const endY = b.y;
+
+		let d = `M ${startX},${startY}`;
+
+		// ---- BOTTOM → TOP ----
+		if (aSide === "bottom" && bSide === "top") {
+			d += `
+				L ${startX},${startY + offset - R}
+				A ${R},${R} 0 0 ${startX < endX ? 0 : 1} ${startX < endX ? startX + R : startX - R},${startY + offset}
+				L ${startX < endX ? endX - R : endX + R},${startY + offset}
+				A ${R},${R} 0 0 ${startX < endX ? 1 : 0} ${endX},${startY + offset + R}
+				L ${endX},${endY}
+			`;
 		}
-	];
 
-	const curvedPath = (a, b) => {
-		const r = 20;
-
-		const midY = (a.y + b.y) / 2;
-		const vDir = b.y > a.y ? 1 : -1;
-		const hDir = b.x > a.x ? 1 : -1;
-
-		return `
-    M ${a.x},${a.y}
-    L ${a.x},${midY - r * vDir}
-    Q ${a.x},${midY}
-      ${a.x + r * hDir},${midY}
-    L ${b.x - r * hDir},${midY}
-    Q ${b.x},${midY}
-      ${b.x},${midY + r * vDir}
-    L ${b.x},${b.y}
-  `;
+		return d;
 	};
 
 	const registerNode = (id, el) => {
@@ -125,19 +82,24 @@
 	$effect(() => calculateAnchors(nodeEls, dimensions.width));
 </script>
 
-<div class="column">
+<div class="content">
 	<svg id={`${id}-svg`} bind:this={svgEl}>
 		<!-- {#each Object.values(anchors) as a}
-			<circle cx={a.top.x} cy={a.top.y} r="8" fill="darkblue" />
-			<circle cx={a.bottom.x} cy={a.bottom.y} r="8" fill="darkblue" />
-			<circle cx={a.left.x} cy={a.left.y} r="8" fill="darkblue" />
-			<circle cx={a.right.x} cy={a.right.y} r="8" fill="darkblue" />
+			<circle cx={a.top.x} cy={a.top.y} r="8" fill="lightblue" />
+			<circle cx={a.bottom.x} cy={a.bottom.y} r="8" fill="lightblue" />
+			<circle cx={a.left.x} cy={a.left.y} r="8" fill="lightblue" />
+			<circle cx={a.right.x} cy={a.right.y} r="8" fill="lightblue" />
 		{/each} -->
 
 		{#each connections as { from, to, fromSide, toSide }}
 			{#if anchors[from] && anchors[to]}
 				<path
-					d={curvedPath(anchors[from][fromSide], anchors[to][toSide])}
+					d={curvedPath(
+						anchors[from][fromSide],
+						anchors[to][toSide],
+						fromSide,
+						toSide
+					)}
 					stroke="black"
 					fill="none"
 					stroke-width="2"
@@ -147,22 +109,20 @@
 	</svg>
 	{#each nodes as { type, value }, i}
 		{@const C = components[type]}
-
-		<div class="node">
-			<C sectionId={id} nodeId={`${id}-${i}`} {...value} />
-		</div>
+		<C sectionId={id} nodeId={`${id}-${i}`} {...value} />
 	{/each}
 </div>
 
 <style>
-	.column {
-		grid-column: 2;
+	.content {
 		position: relative;
+		max-width: 900px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
 	}
 
 	svg {
-		background: var(--color-gray-200);
-		grid-column: 2;
 		height: 100%;
 		width: 100%;
 		position: absolute;

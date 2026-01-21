@@ -3,6 +3,13 @@
 	import Section from "$components/Section.svelte";
 </script>
 
-{#each copy.sections as section}
-	<Section {...section} />
-{/each}
+<article>
+	{#each copy.sections as section}
+		<Section {...section} />
+	{/each}
+</article>
+
+<style>
+	article {
+	}
+</style>
