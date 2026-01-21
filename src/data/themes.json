@@ -1,0 +1,17 @@
+{
+	"first-gen": {
+		"font-heading": "ABC Maxi Plus",
+		"heading-color": "#ccffed",
+		"heading-shadow": "-1px -1px 0 #262626, 1px -1px 0 #262626, -1px 1px 0 #262626, 1px 1px 0 #262626, 4px 4px 0 rgba(38, 38, 38, 1)",
+		"eunice-text-color": "black",
+		"eunice-text-bg": "#ccffed",
+		"minji-text-color": "black",
+		"minji-text-bg": "#F2FAFE",
+		"song-bg": "#F1FB39",
+		"years-bg": "#F2FAFE",
+		"years-color": "black",
+		"line-stroke": "#ccffed",
+		"border": "2px solid #262626",
+		"box-shadow": "inset -4px -4px 0 rgba(0, 0, 0, .4), inset 4px 4px rgba(255, 255, 255, 0.6)"
+	}
+}

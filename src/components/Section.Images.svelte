@@ -32,7 +32,7 @@
 	}
 
 	img {
-		border: 2px solid black;
+		border: var(--border);
 	}
 
 	.rectangle {

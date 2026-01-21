@@ -26,12 +26,12 @@
 
 <style>
 	.song {
-		background: pink;
+		background: var(--song-bg);
 		top: 15%;
 		position: fixed;
 		width: 150px;
 		padding: 1rem;
-		border: 2px solid black;
+		border: var(--border-style);
 		border-radius: var(--border-radius);
 	}
 </style>

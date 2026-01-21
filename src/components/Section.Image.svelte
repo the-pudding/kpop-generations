@@ -28,7 +28,7 @@
 
 	img {
 		margin: 0 auto;
-		border: 2px solid black;
+		border: var(--border);
 		border-radius: var(--border-radius);
 	}
 

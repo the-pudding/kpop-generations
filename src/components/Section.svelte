@@ -1,11 +1,16 @@
 <script>
+	import themes from "$data/themes.json";
 	import Nodes from "$components/Nodes.svelte";
 	import Songs from "$components/Songs.svelte";
 
 	let { id, heading, years, coverImg, nodes, songs } = $props();
+
+	const style = Object.entries(themes[id] || {})
+		.map(([key, value]) => `--${key}: ${value}`)
+		.join(";");
 </script>
 
-<section {id}>
+<section {id} {style}>
 	<div class="cover">
 		<img src={`assets/${id}/cover.png`} />
 		<div class="years">({years})</div>
@@ -20,6 +25,7 @@
 <style>
 	section {
 		padding: 0 2rem;
+		font-family: var(--font-body);
 	}
 
 	.cover {
@@ -29,10 +35,8 @@
 	}
 
 	.cover img {
-		grid-column: 2;
-		border: 2px solid black;
+		border: var(--border);
 		border-radius: var(--border-radius);
-		margin: 3rem 0;
 	}
 
 	.years {
@@ -40,22 +44,22 @@
 		position: absolute;
 		bottom: 0;
 		transform: translate(-20%, 50%);
-		background: white;
-		border: 2px solid black;
+		background: var(--years-bg);
+		color: var(--years-color);
+		border: var(--border);
 		width: fit-content;
 		padding: 0.5rem 1rem;
 		border-radius: var(--border-radius);
+		box-shadow: var(--box-shadow);
 	}
 
 	h2 {
+		font-size: 92px;
+		font-weight: bold;
 		text-align: center;
 		text-transform: uppercase;
-	}
-
-	.images {
-		grid-column: 2;
-		display: flex;
-		gap: 1rem;
-		margin: 3rem 0;
+		font-family: var(--font-heading);
+		color: var(--heading-color);
+		text-shadow: var(--heading-shadow);
 	}
 </style>

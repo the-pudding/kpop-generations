@@ -100,7 +100,6 @@
 						fromSide,
 						toSide
 					)}
-					stroke="black"
 					fill="none"
 					stroke-width="2"
 				/>
@@ -128,5 +127,9 @@
 		position: absolute;
 		top: 0;
 		z-index: -1;
+	}
+
+	path {
+		stroke: var(--line-stroke);
 	}
 </style>

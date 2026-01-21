@@ -1,6 +1,24 @@
 @font-face {
-	font-family: "Atlas Grotesk";
-	src: url("https://pudding.cool/assets/fonts/atlas/AtlasGrotesk-Regular-Web.woff2") format("woff2");
+	font-family: "ABC Diatype";
+	src: url("assets/font/ABCDiatypeSemi-Mono-Regular-Trial.woff") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "ABC Diatype";
+	src: url("assets/font/ABCDiatypeSemi-Mono-Bold-Trial.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-stretch: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "ABC Maxi Plus";
+	src: url("assets/font/ABCMaxiPlusVariable-Trial.woff2") format("woff2");
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal;
@@ -9,7 +27,18 @@
 
 @font-face {
 	font-family: "Atlas Grotesk";
-	src: url("https://pudding.cool/assets/fonts/atlas/AtlasGrotesk-Bold-Web.woff2") format("woff2");
+	src: url("https://pudding.cool/assets/fonts/atlas/AtlasGrotesk-Regular-Web.woff2")
+		format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Atlas Grotesk";
+	src: url("https://pudding.cool/assets/fonts/atlas/AtlasGrotesk-Bold-Web.woff2")
+		format("woff2");
 	font-weight: 700;
 	font-style: normal;
 	font-stretch: normal;
@@ -18,7 +47,8 @@
 
 @font-face {
 	font-family: "Tiempos Text";
-	src: url("https://pudding.cool/assets/fonts/tiempos/TiemposTextWeb-Regular.woff2") format("woff2");
+	src: url("https://pudding.cool/assets/fonts/tiempos/TiemposTextWeb-Regular.woff2")
+		format("woff2");
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal;
@@ -27,7 +57,8 @@
 
 @font-face {
 	font-family: "Tiempos Text";
-	src: url("https://pudding.cool/assets/fonts/tiempos/TiemposTextWeb-Bold.woff2") format("woff2");
+	src: url("https://pudding.cool/assets/fonts/tiempos/TiemposTextWeb-Bold.woff2")
+		format("woff2");
 	font-weight: 700;
 	font-style: normal;
 	font-stretch: normal;
@@ -36,7 +67,8 @@
 
 @font-face {
 	font-family: "Atlas Typewriter";
-	src: url("https://pudding.cool/assets/fonts/atlas/AtlasTypewriter-Medium-Web.woff2") format("woff2");
+	src: url("https://pudding.cool/assets/fonts/atlas/AtlasTypewriter-Medium-Web.woff2")
+		format("woff2");
 	font-weight: 500;
 	font-style: normal;
 	font-stretch: normal;
