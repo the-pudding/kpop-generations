@@ -7,6 +7,11 @@
 	const current = getContext("current");
 
 	const sectionIds = copy.sections.map((section) => section.id);
+
+	const onClick = (id) => {
+		const el = document.getElementById(id);
+		if (el) el.scrollIntoView({ behavior: "smooth" });
+	};
 </script>
 
 <header>
@@ -21,7 +26,7 @@
 			{#each sectionIds as id}
 				{@const active = current.section === id}
 				{@const title = _.upperCase(id)}
-				<li class:active>
+				<li class:active onclick={() => onClick(id)}>
 					<span class="circle"></span>
 					{title}
 				</li>
@@ -90,7 +95,12 @@
 		align-items: center;
 		gap: 0.25rem;
 		opacity: 0.4;
-		transition: opacity 0.3s;
+		transition: opacity 0.2s;
+	}
+
+	nav li:hover {
+		opacity: 0.8;
+		cursor: pointer;
 	}
 
 	nav li.active {
@@ -105,7 +115,7 @@
 		display: inline-block;
 		background: white;
 		opacity: 0;
-		transition: opacity 0.3s;
+		transition: opacity 0.2s;
 	}
 
 	.active .circle {
