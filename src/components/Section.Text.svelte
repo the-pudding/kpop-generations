@@ -58,7 +58,7 @@
 		align-items: flex-start;
 		margin: 3rem 0;
 		justify-content: space-between;
-		gap: 0.5rem;
+		gap: 1rem;
 	}
 
 	.song {

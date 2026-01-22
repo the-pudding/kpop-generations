@@ -1,35 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	
-		<link href="../../_app/immutable/assets/0.CtqgulT9.css" rel="stylesheet">
-		<link href="../../_app/immutable/assets/4.CCBKMX7Z.css" rel="stylesheet">
-		<link rel="modulepreload" href="../../_app/immutable/entry/start.Dvjy_W7Z.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/BJeUXYU2.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/jUXFghV9.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/DvcpMd1r.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/DKxShCLb.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/DyoCfgJr.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/Cw111mmG.js">
-		<link rel="modulepreload" href="../../_app/immutable/entry/app.Ch3a5nxP.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/Bzak7iHL.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/DYBi1Mn8.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/DT-Q_mbh.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/DHOkCUhx.js">
-		<link rel="modulepreload" href="../../_app/immutable/nodes/0.DZztHqnQ.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/CgsOdXS3.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/CjEkF8p9.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/M7bNsXdx.js">
-		<link rel="modulepreload" href="../../_app/immutable/nodes/4.D4v9kAHq.js">
-</head>
-
-<body>
-	<a href="#content" class="skip-to-main">Skip to main content</a>
-	<div><!--[--><!--[--><!----><header class="svelte-oiwvqb"><div class="wordmark svelte-oiwvqb"><a href="https://pudding.cool" aria-label="The Pudding" target="_self" class="svelte-oiwvqb"><!----><svg width="100%" viewBox="0 0 200 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+import"../chunks/Bzak7iHL.js";import{H as Z,h as q,I as p,K as v,M as b,N as e,O as C,aK as h,J as y,n as o,aM as u,o as H,s as O,aJ as S,F as V}from"../chunks/DvcpMd1r.js";import{s as j,e as I}from"../chunks/DKxShCLb.js";import{e as J,i as K,s as P}from"../chunks/CgsOdXS3.js";import{c as T,h as z}from"../chunks/CjEkF8p9.js";import{_ as B}from"../chunks/M7bNsXdx.js";const F=!0,N="always",C7=Object.freeze(Object.defineProperty({__proto__:null,prerender:F,trailingSlash:N},Symbol.toStringTag,{value:"Module"})),$=`<svg width="100%" viewBox="0 0 200 34" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M87.8957 6.72787C87.7857 6.56787 87.6857 6.41787 87.5557 6.25787C86.6257 5.12787 85.4057 4.43787 83.9857 4.14787C82.1157 3.77787 80.3157 4.08787 78.5857 4.84787C75.2057 6.34787 72.4657 8.62787 70.2257 11.5479C68.6757 13.5779 67.4957 15.8279 66.4157 18.1379C65.7957 19.4779 65.3157 20.8579 65.1457 22.3279C65.0157 23.4279 65.1257 24.4979 65.6957 25.4979C66.4457 26.8079 67.9057 27.4179 69.1857 26.9179C69.9857 26.6079 70.5457 25.9979 70.8857 25.2479C71.3757 24.1879 71.8457 23.1079 72.1957 21.9979C72.7057 20.3579 72.7357 18.6879 72.2257 17.0179C72.1557 16.7679 72.0757 16.5179 72.0557 16.2679C72.0357 15.9479 72.0957 15.6179 72.4057 15.4379C72.6857 15.2779 72.9857 15.3079 73.2557 15.4879C73.4757 15.6279 73.6757 15.7879 73.8657 15.9579C75.4057 17.2779 77.2057 17.8879 79.2357 17.9379C79.7457 17.8879 80.2657 17.8679 80.7657 17.7679C82.1857 17.4779 83.4357 16.9979 84.5157 16.3179C85.3657 15.7879 86.0857 15.1079 86.7057 14.3179C87.3957 13.4379 87.9657 12.4079 88.3657 11.1979C88.6157 10.4479 88.7057 9.72787 88.6557 9.02787C88.5957 8.22787 88.3457 7.46787 87.8657 6.74787L87.8957 6.72787Z" fill="white"/>
 <path d="M152.296 10.7379C152.296 10.7379 152.296 10.6579 152.296 10.6179C152.256 10.1679 152.216 9.49788 152.136 8.82788C152.086 8.37788 151.996 7.93787 151.856 7.51787C151.756 7.20787 151.636 6.90787 151.476 6.61787C150.866 5.54787 149.836 5.25787 148.796 5.90787C148.346 6.18787 147.936 6.54787 147.576 6.93787C146.856 7.72787 146.276 8.62787 145.776 9.56787C146.046 10.1879 146.246 10.8979 146.346 11.7379C146.846 15.8579 145.236 19.5479 142.586 22.4179C142.596 22.9379 142.636 23.4679 142.706 23.9979C142.826 24.9079 142.996 25.8079 143.526 26.5879C143.946 27.2279 144.526 27.5779 145.296 27.4279C145.676 27.3479 146.056 27.1779 146.366 26.9479C147.066 26.4479 147.626 25.7979 148.106 25.0879C148.536 24.4579 148.906 23.7979 149.266 23.1279C149.756 22.1979 150.186 21.2379 150.546 20.2479C150.726 19.7479 150.906 19.2479 151.056 18.7379C151.826 16.2179 152.226 13.6379 152.306 10.7179L152.296 10.7379Z" fill="white"/>
 <path d="M127.076 12.7179C127.056 12.3179 126.996 11.9279 126.916 11.5379C126.736 10.6579 126.376 9.82787 125.816 9.11787C125.726 9.00787 125.666 8.88787 125.566 8.77787C124.676 7.81787 123.436 7.28787 122.256 6.79787C120.226 5.94787 118.206 4.98787 116.126 4.24787C113.516 3.30787 111.956 4.14787 111.066 6.20787C111.116 6.45787 111.156 6.71787 111.196 6.97787C111.426 8.80787 111.096 10.5679 110.596 12.3179C109.786 15.0979 108.626 17.6779 107.026 20.0379C106.926 21.0279 106.936 22.0079 107.176 23.0079C107.576 24.6179 108.436 25.8679 110.056 26.4679C110.736 26.7179 111.446 26.8079 111.856 26.7779C113.656 26.7579 115.076 26.4079 116.466 25.9179C118.846 25.0779 120.906 23.7779 122.706 22.1179C123.316 21.5479 123.896 20.9379 124.446 20.2879C124.556 20.1579 124.646 20.0279 124.746 19.8979C126.386 17.8079 127.226 15.4379 127.076 12.7279V12.7179Z" fill="white"/>
@@ -46,54 +15,4 @@
 <path d="M116.146 14.3579C115.586 15.0379 115.286 15.8179 115.126 16.6679C115.106 16.7879 115.086 16.9079 115.076 17.0179C114.956 18.4579 116.176 19.3979 117.526 18.8879C118.496 18.5279 119.006 17.7679 119.196 16.7979C119.366 15.9079 119.206 15.0779 118.586 14.3579C118.066 13.7579 116.796 13.5779 116.156 14.3579H116.146Z" fill="black"/>
 <path d="M80.7756 8.67787C79.8256 8.68787 78.7656 9.48787 78.4556 10.4379C78.1956 11.2479 78.4256 12.0679 79.0656 12.5679C79.7156 13.0779 80.4656 13.1079 81.2156 12.6279C81.8756 12.2079 82.3356 11.6079 82.4656 10.8279C82.6856 9.57787 81.7956 8.63787 80.7756 8.67787Z" fill="black"/>
 </svg>
-<!----></a></div> <nav class="svelte-oiwvqb"><ul class="svelte-oiwvqb"><!--[--><li class="svelte-oiwvqb"><span class="circle svelte-oiwvqb"></span> FIRST GEN</li><li class="svelte-oiwvqb"><span class="circle svelte-oiwvqb"></span> SECOND GEN</li><li class="svelte-oiwvqb"><span class="circle svelte-oiwvqb"></span> THIRD GEN</li><li class="svelte-oiwvqb"><span class="circle svelte-oiwvqb"></span> FOURTH GEN</li><li class="svelte-oiwvqb"><span class="circle svelte-oiwvqb"></span> FIFTH GEN</li><!--]--></ul></nav></header><!----> <main id="content"><!----><div class="wrapper svelte-4bvog6"><h1>Default Element Styles</h1> <section id="text"><article id="text--headings" class="svelte-4bvog6"><h2 class="svelte-4bvog6">Headings</h2> <div><h1>Heading 1</h1> <h2>Heading 2</h2> <h3>Heading 3</h3> <h4>Heading 4</h4> <h5>Heading 5</h5> <h6>Heading 6</h6></div></article> <article id="text--paragraphs" class="svelte-4bvog6"><h2 class="svelte-4bvog6">Paragraphs</h2> <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra
-					viverra nisl, vel maximus turpis ornare a. Ut scelerisque lectus sed
-					odio dictum scelerisque vitae quis nisi. Nulla facilisi. Phasellus
-					vehicula convallis nisl, id suscipit dui semper at. In eu iaculis
-					lorem. In vehicula sed mauris et suscipit. Vivamus pellentesque non
-					massa sit amet ornare. Integer placerat est vitae nisl molestie, eget
-					rhoncus erat vulputate. Proin ornare massa eget bibendum faucibus.</p></div></article> <article id="text--blockquotes" class="svelte-4bvog6"><h2 class="svelte-4bvog6">Blockquotes</h2> <div><blockquote><p>Etiam porttitor egestas elit, at venenatis neque accumsan eu. Nulla
-						viverra odio nisi, quis commodo tellus tristique non. Proin ac ante
-						at orci euismod eleifend. Quisque nisi sapien, dapibus in venenatis
-						sit amet, posuere non purus. In sit amet metus erat. Pellentesque
-						nec neque eleifend, luctus ipsum at, ullamcorper nunc. Pellentesque
-						sagittis, dolor eu bibendum lacinia, orci ex bibendum risus, at
-						tincidunt augue lacus eleifend diam. Nulla facilisis velit ut est
-						auctor sollicitudin. Morbi eget lectus a lacus maximus molestie in
-						ut lorem.</p> <p>Vestibulum ut erat sapien. Duis eros est, tempus a rutrum eu,
-						rhoncus at ante. Vestibulum congue vel nunc et dapibus. Ut tristique
-						facilisis orci ac pretium. Nunc et sodales turpis. Nulla pretium
-						augue vitae faucibus tempor. Aliquam convallis mollis feugiat. Ut
-						non pellentesque sem. Suspendisse interdum, neque at hendrerit
-						varius, enim neque imperdiet enim, pellentesque efficitur leo orci
-						non erat.</p> <cite>Said no one, ever.</cite></blockquote></div></article> <article id="text--lists" class="svelte-4bvog6"><h2 class="svelte-4bvog6">Lists</h2> <div><h3>Definition list</h3> <dl><dt>Definition List Title</dt> <dd>This is a definition list division.</dd></dl> <h3>Ordered List</h3> <ol><li>List Item 1</li> <li>List Item 2</li> <li>List Item 3 <ol><li>Nested Ordered List Item 3.1</li> <li>Nested Ordered List Item 3.2</li> <li>Nested Ordered List Item 3.3</li></ol></li> <li>List Item 4 <ul><li>Nested Unordered List Item 4.1</li> <li>Nested Unordered List Item 4.2</li> <li>Nested Unordered List Item 4.3</li></ul></li></ol> <h3>Unordered List</h3> <ul><li>List Item 1</li> <li>List Item 2</li> <li>List Item 3 <ol><li>Nested Ordered List Item 3.1</li> <li>Nested Ordered List Item 3.2</li> <li>Nested Ordered List Item 3.3</li></ol></li> <li>List Item 4 <ul><li>Nested Unordered List Item 4.1</li> <li>Nested Unordered List Item 4.2</li> <li>Nested Unordered List Item 4.3</li></ul></li></ul></div></article> <article id="text--hr" class="svelte-4bvog6"><h2 class="svelte-4bvog6">Horizontal rules</h2> <div><hr/></div></article> <article id="text--tables" class="svelte-4bvog6"><h2 class="svelte-4bvog6">Tabular data</h2> <table><caption>Table Caption</caption><thead><tr><th>Table Heading 1</th><th>Table Heading 2</th><th>Table Heading 3</th><th>Table Heading 4</th><th>Table Heading 5</th></tr></thead><tbody><tr><td>Table Cell 1</td><td>Table Cell 2</td><td>Table Cell 3</td><td>Table Cell 4</td><td>Table Cell 5</td></tr><tr><td>Table Cell 1</td><td>Table Cell 2</td><td>Table Cell 3</td><td>Table Cell 4</td><td>Table Cell 5</td></tr><tr><td>Table Cell 1</td><td>Table Cell 2</td><td>Table Cell 3</td><td>Table Cell 4</td><td>Table Cell 5</td></tr><tr><td>Table Cell 1</td><td>Table Cell 2</td><td>Table Cell 3</td><td>Table Cell 4</td><td>Table Cell 5</td></tr></tbody></table></article> <article id="text--inline" class="svelte-4bvog6"><h2 class="svelte-4bvog6">Inline elements</h2> <div><a href="./">This is a text link</a>.<br/> <strong>Strong is used to indicate strong importance.</strong><br/> <em>This text has added emphasis.</em><br/> The <b>b element</b> is stylistically different text from normal text,
-				without any special importance.<br/> The <i>i element</i> is text that is offset from the normal text.<br/> The <u>u element</u> is text with an unarticulated, though explicitly
-				rendered, non-textual annotation.<br/> <del>This text is deleted</del> and <ins>This text is inserted</ins>.<br/> <s>This text has a strikethrough</s>.<br/> Superscript<sup>®</sup>.<br/> Subscript for things like H<sub>2</sub>O.<br/> <small>This small text is small for for fine print, etc.</small><br/> Abbreviation: <abbr title="HyperText Markup Language">HTML</abbr><br/> <q cite="https://developer.mozilla.org/en-US/docs/HTML/Element/q">This text is a short inline quotation.</q><br/> <cite>This is a citation.</cite><br/> The <dfn>dfn element</dfn> indicates a definition.<br/> The <mark>mark element</mark> indicates a highlight.<br/> The <var>variable element</var>, such as <var>x</var> = <var>y</var>.<br/> The time element: <time datetime="2013-04-06T12:32+00:00">2 weeks ago</time><br/></div></article></section> <section id="forms"><h2>Form elements</h2> <form><fieldset id="forms--input"><legend>Input fields</legend> <p><label for="input--text">Text Input</label> <input id="input--text" type="text" placeholder="Text Input"/></p> <p><label for="input--password">Password</label> <input id="input--password" type="password" placeholder="Type your Password"/></p> <p><label for="input--webaddress">Web Address</label> <input id="input--webaddress" type="url" placeholder="http://yoursite.com"/></p> <p><label for="input--emailaddress">Email Address</label> <input id="input--emailaddress" type="email" placeholder="name@email.com"/></p> <p><label for="input--phone">Phone Number</label> <input id="input--phone" type="tel" placeholder="(999) 999-9999"/></p> <p><label for="input--search">Search</label> <input id="input--search" type="search" placeholder="Enter Search Term"/></p> <p><label for="input--text2">Number Input</label> <input id="input--text2" type="number" placeholder="Enter a Number"/></p> <p><label for="input--text3" class="error">Error</label> <input id="input--text3" class="is-error" type="text" placeholder="Text Input"/></p> <p><label for="input--text4" class="valid">Valid</label> <input id="input--text4" class="is-valid" type="text" placeholder="Text Input"/></p></fieldset> <fieldset id="forms--select"><legend>Select menus</legend> <p><label for="select">Select</label> <select id="select"><optgroup label="Option Group"><option>Option One</option> <option>Option Two</option> <option>Option Three</option></optgroup></select></p></fieldset> <fieldset id="forms--checkbox"><legend>Checkboxes</legend> <ul class="list list--bare"><li><label for="checkbox1"><input id="checkbox1" name="checkbox" type="checkbox" checked="checked"/> Choice A</label></li> <li><label for="checkbox2"><input id="checkbox2" name="checkbox" type="checkbox"/> Choice B</label></li> <li><label for="checkbox3"><input id="checkbox3" name="checkbox" type="checkbox"/> Choice C</label></li></ul></fieldset> <fieldset id="forms--radio"><legend>Radio buttons</legend> <ul class="list list--bare"><li><label for="radio1"><input id="radio1" name="radio" type="radio" class="radio" checked="checked"/> Option 1</label></li> <li><label for="radio2"><input id="radio2" name="radio" type="radio" class="radio"/> Option
-							2</label></li> <li><label for="radio3"><input id="radio3" name="radio" type="radio" class="radio"/> Option
-							3</label></li></ul></fieldset> <fieldset id="forms--textareas"><legend>Textareas</legend> <p><label for="textarea">Textarea</label> <textarea id="textarea" rows="8" cols="48" placeholder="Enter your message here"></textarea></p></fieldset> <fieldset id="forms--html5"><legend>HTML5 inputs</legend> <p><label for="ic">Color input</label> <input type="color" id="ic" value="#000000"/></p> <p><label for="in">Number input</label> <input type="number" id="in" min="0" max="10" value="5"/></p> <p><label for="ir">Range input</label> <input type="range" id="ir" value="10"/></p> <p><label for="idd">Date input</label> <input type="date" id="idd" value="1970-01-01"/></p> <p><label for="idm">Month input</label> <input type="month" id="idm" value="1970-01"/></p> <p><label for="idw">Week input</label> <input type="week" id="idw" value="1970-W01"/></p> <p><label for="idt">Datetime input</label> <input type="datetime" id="idt" value="1970-01-01T00:00:00Z"/></p> <p><label for="idtl">Datetime-local input</label> <input type="datetime-local" id="idtl" value="1970-01-01T00:00"/></p></fieldset> <fieldset id="forms--action"><legend>Action buttons</legend> <p><input type="submit" value="&lt;input type=submit>"/> <input type="button" value="&lt;input type=button>"/> <input type="reset" value="&lt;input type=reset>"/> <input type="submit" value="&lt;input disabled>" disabled="true"/></p> <p><button type="submit">&lt;button type=submit></button> <button type="button">&lt;button type=button></button> <button type="reset">&lt;button type=reset></button> <button type="button" disabled="true">&lt;button disabled></button></p></fieldset></form></section></div><!----><!----></main><!----><!--]--> <!--[!--><!--]--><!--]-->
-			
-			<script>
-				{
-					__sveltekit_l0lri5 = {
-						base: new URL("../..", location).pathname.slice(0, -1)
-					};
-
-					const element = document.currentScript.parentElement;
-
-					Promise.all([
-						import("../../_app/immutable/entry/start.Dvjy_W7Z.js"),
-						import("../../_app/immutable/entry/app.Ch3a5nxP.js")
-					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 4],
-							data: [null,null],
-							form: null,
-							error: null
-						});
-					});
-				}
-			</script>
-		</div>
-</body>
-
-</html>
+`;var A=p('<li><span class="circle svelte-oiwvqb"></span> </li>'),D=p('<header class="svelte-oiwvqb"><div class="wordmark svelte-oiwvqb"><a href="https://pudding.cool" aria-label="The Pudding" target="_self" class="svelte-oiwvqb"><!></a></div> <nav class="svelte-oiwvqb"><ul class="svelte-oiwvqb"></ul></nav></header>');function E(n,l){Z(l,!0);const c=q("current"),s=T.sections.map(d=>d.id);var t=D(),a=e(t),i=e(a),L=e(i);z(L,()=>$),C(i),C(a);var f=h(a,2),M=e(f);J(M,21,()=>s,K,(d,w)=>{const _=u(()=>c.section===o(w)),g=u(()=>B.upperCase(o(w)));var r=A();let m;var x=h(e(r));C(r),y(k=>{m=P(r,1,"svelte-oiwvqb",null,m,k),j(x,` ${o(g)??""}`)},[()=>({active:o(_)})]),v(d,r)}),C(M),C(f),C(t),v(n,t),b()}var G=p('<!> <main id="content"><!></main>',1);function t7(n,l){Z(l,!0);let c=H({section:void 0});O("current",c);var s=G(),t=S(s);E(t,{});var a=h(t,2),i=e(a);I(i,()=>l.children??V),C(a),v(n,s),b()}export{t7 as component,C7 as universal};
