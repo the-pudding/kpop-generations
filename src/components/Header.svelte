@@ -2,6 +2,9 @@
 	import _ from "lodash";
 	import copy from "$data/copy.json";
 	import wordmark from "$svg/wordmark-bubble.svg";
+	import { getContext } from "svelte";
+
+	const current = getContext("current");
 
 	const sectionIds = copy.sections.map((section) => section.id);
 </script>
@@ -15,9 +18,13 @@
 
 	<nav>
 		<ul>
-			{#each ["first-gen", "second-gen", "third-gen", "fourth-gen", "fifth-gen"] as id}
+			{#each sectionIds as id}
+				{@const active = current.section === id}
 				{@const title = _.upperCase(id)}
-				<li>{title}</li>
+				<li class:active>
+					<span class="circle"></span>
+					{title}
+				</li>
 			{/each}
 		</ul>
 	</nav>
@@ -28,7 +35,6 @@
 		display: grid;
 		grid-template-columns: 1fr auto 1fr;
 		align-items: center;
-
 		position: fixed;
 		top: 0;
 		z-index: var(--z-top);
@@ -47,7 +53,6 @@
 	.wordmark {
 		grid-column: 2;
 		justify-self: center;
-
 		height: 80%;
 		width: fit-content;
 		transform: rotate(-4deg);
@@ -67,7 +72,6 @@
 	nav {
 		grid-column: 3;
 		justify-self: end;
-
 		color: #f2fafe;
 		font-size: var(--12px);
 		font-weight: bold;
@@ -79,6 +83,33 @@
 		padding: 0;
 		display: flex;
 		gap: 1rem;
+	}
+
+	nav li {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		opacity: 0.4;
+		transition: opacity 0.3s;
+	}
+
+	nav li.active {
+		opacity: 1;
+	}
+
+	.circle {
+		height: 6px;
+		width: 6px;
+		transform: translate(0, -1px);
+		border-radius: 50%;
+		display: inline-block;
+		background: white;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+
+	.active .circle {
+		opacity: 1;
 	}
 
 	:global(header .wordmark svg) {

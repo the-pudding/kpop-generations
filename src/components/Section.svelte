@@ -1,6 +1,10 @@
 <script>
 	import themes from "$data/themes.json";
 	import Nodes from "$components/Nodes.svelte";
+	import { getContext } from "svelte";
+	import inView from "$actions/inView.js";
+
+	const current = getContext("current");
 
 	let { id, heading, years, nodes } = $props();
 
@@ -9,7 +13,7 @@
 		.join(";");
 </script>
 
-<section {id} {style}>
+<section {id} {style} use:inView onenter={() => (current.section = id)}>
 	<div class="cover">
 		<img src={`assets/img/${id}/cover.png`} />
 		<div class="years">({years})</div>
