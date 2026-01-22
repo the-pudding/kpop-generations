@@ -11,7 +11,7 @@
 
 <section {id} {style}>
 	<div class="cover">
-		<img src={`assets/${id}/cover.png`} />
+		<img src={`assets/img/${id}/cover.png`} />
 		<div class="years">({years})</div>
 	</div>
 
@@ -22,7 +22,7 @@
 
 <style>
 	section {
-		padding: 10rem 2rem;
+		padding: 5rem 2rem;
 		font-family: var(--font-body);
 		background: linear-gradient(to bottom, var(--background));
 	}
@@ -34,7 +34,7 @@
 	}
 
 	.cover img {
-		border: var(--border);
+		border: 2px solid var(--border);
 		border-radius: var(--border-radius);
 	}
 
@@ -43,13 +43,15 @@
 		position: absolute;
 		bottom: 0;
 		transform: translate(-20%, 50%);
-		background: var(--years-bg);
-		color: var(--years-color);
-		border: var(--border);
+		background: var(--text-bg);
+		color: var(--text-color);
+		border: 2px solid var(--border);
 		width: fit-content;
 		padding: 0.5rem 1rem;
 		border-radius: var(--border-radius);
 		box-shadow: var(--box-shadow);
+		backdrop-filter: blur(20px);
+		text-transform: uppercase;
 	}
 
 	h2 {
@@ -57,7 +59,7 @@
 		font-weight: bold;
 		text-align: center;
 		text-transform: uppercase;
-		font-family: var(--font-heading);
+		font-family: "ABC Maxi Plus";
 		color: var(--heading-color);
 		text-shadow: var(--heading-shadow);
 	}

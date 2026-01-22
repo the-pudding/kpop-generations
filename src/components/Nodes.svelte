@@ -1,10 +1,11 @@
 <script>
+	import _ from "lodash";
 	import { setContext } from "svelte";
 	import Text from "$components/Section.Text.svelte";
 	import Image from "$components/Section.Image.svelte";
 	import Images from "$components/Section.Images.svelte";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
-	import connections from "$data/connections.json";
+	// import connections from "$data/connections.json";
 	let dimensions = new useWindowDimensions();
 
 	let { id, nodes } = $props();
@@ -51,8 +52,21 @@
 	});
 
 	let svgEl = $state();
-	let nodeEls = $state(new Map());
 	let anchors = $state({});
+	let nodeEls = $state(new Map());
+	let nodeIds = $derived(
+		_.orderBy(Array.from(nodeEls.keys()), (id) => +id.split("-").at(-1))
+	);
+
+	// Always bottom -> top
+	const connections = $derived(
+		nodeIds.slice(0, -1).map((from, i) => ({
+			from,
+			to: nodeIds[i + 1],
+			fromSide: "bottom",
+			toSide: "top"
+		}))
+	);
 
 	const calculateAnchors = () => {
 		if (!svgEl) return {};

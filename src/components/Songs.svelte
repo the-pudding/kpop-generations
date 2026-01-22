@@ -31,7 +31,7 @@
 		position: fixed;
 		width: 150px;
 		padding: 1rem;
-		border: var(--border);
+		border: 2px solid var(--border);
 		box-shadow: var(--box-shadow);
 		border-radius: var(--border-radius);
 	}

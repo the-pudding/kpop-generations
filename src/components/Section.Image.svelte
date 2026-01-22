@@ -1,19 +1,31 @@
 <script>
-	import { getContext, onMount } from "svelte";
+	import themes from "$data/themes.json";
+	import { getContext } from "svelte";
 
-	let { nodeId, src, alt, shape } = $props();
+	let { sectionId, nodeId, src, alt, shape } = $props();
 	const { registerNode } = getContext("nodeRegistry");
 
 	let el;
+
+	const boxShadows =
+		themes[sectionId]["box-shadow"] !== ""
+			? themes[sectionId]["box-shadow"]
+					?.split(/,(?![^(]*\))/)
+					.map((s) => s.trim())
+			: [];
+
+	const insetShadows = boxShadows
+		.filter((d) => d.startsWith("inset"))
+		.join(", ");
 </script>
 
-<div id={nodeId} class="image-wrapper">
+<div id={nodeId} class="image-wrapper" style="--inset-shadows: {insetShadows}">
 	<img
+		src={`assets/img/${sectionId}/${src}`}
 		bind:this={el}
 		class:rectangle={shape === "rectangle"}
 		class:circle={shape === "circle"}
 		class:oval={shape === "oval"}
-		{src}
 		{alt}
 		onload={() => {
 			registerNode(nodeId, el);
@@ -23,13 +35,25 @@
 
 <style>
 	.image-wrapper {
-		margin: 3rem 0;
+		max-width: 300px;
+		margin: 3rem auto;
+		position: relative;
+		display: inline-block;
+	}
+
+	.image-wrapper::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: var(--border-radius);
+		box-shadow: var(--inset-shadows);
 	}
 
 	img {
 		margin: 0 auto;
-		border: var(--border);
+		border: 2px solid var(--border);
 		border-radius: var(--border-radius);
+		box-shadow: var(--box-shadow);
 	}
 
 	.rectangle {
