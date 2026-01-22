@@ -19,7 +19,11 @@
 		.join(", ");
 </script>
 
-<div id={nodeId} class="image-wrapper" style="--inset-shadows: {insetShadows}">
+<div
+	id={nodeId}
+	class="image-wrapper"
+	style={insetShadows ? `--inset-shadows: ${insetShadows}` : ""}
+>
 	<img
 		src={`assets/img/${sectionId}/${src}`}
 		bind:this={el}

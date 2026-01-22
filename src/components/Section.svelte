@@ -9,6 +9,7 @@
 	let { id, heading, years, nodes } = $props();
 
 	const style = Object.entries(themes[id] || {})
+		.filter(([key, value]) => !key.endsWith("-style"))
 		.map(([key, value]) => `--${key}: ${value}`)
 		.join(";");
 </script>
@@ -26,9 +27,14 @@
 
 <style>
 	section {
+		--years-overhang: 1.75rem;
+
 		padding: 5rem 2rem;
 		font-family: var(--font-body);
 		background: linear-gradient(to bottom, var(--background));
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.cover {
@@ -46,7 +52,7 @@
 		font-weight: bold;
 		position: absolute;
 		bottom: 0;
-		transform: translate(-20%, 50%);
+		transform: translate(calc(-1 * var(--years-overhang)), 50%);
 		background: var(--text-bg);
 		color: var(--text-color);
 		border: 2px solid var(--border);
@@ -60,6 +66,12 @@
 
 	h2 {
 		font-size: 92px;
+		max-width: 1000px;
+		margin: 2rem 0;
+		transform: translate(
+			calc(-0.5 * var(--years-overhang)),
+			0
+		); /* to look more centered */
 		font-weight: bold;
 		text-align: center;
 		text-transform: uppercase;

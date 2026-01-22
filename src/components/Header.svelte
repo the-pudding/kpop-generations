@@ -100,7 +100,7 @@
 	.circle {
 		height: 6px;
 		width: 6px;
-		transform: translate(0, -1px);
+		transform: translate(0, -1px); /* to look more centered */
 		border-radius: 50%;
 		display: inline-block;
 		background: white;
