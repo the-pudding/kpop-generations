@@ -16,7 +16,7 @@
 	"second-gen": {
 		"background": "#F1FD0F, #D21FB2 33%, #4D9BEF 63%, #DADAFF 86%, #000000",
 		"heading-color": "#FFFAFC",
-		"heading-shadow": "0px 4px 24px #D255F3",
+		"heading-shadow": "-1px -1px 0 #D255F3, 1px -1px 0 #D255F3, -1px 1px 0 #D255F3, 1px 1px 0 #D255F3, 0px 4px 24px #D255F3",
 		"line-stroke": "#FFD6F0",
 		"text-color": "#D255F3",
 		"text-bg": "linear-gradient(to bottom right, #FFFAFC, #FFCCED)",
