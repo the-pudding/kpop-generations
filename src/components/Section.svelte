@@ -1,9 +1,8 @@
 <script>
 	import themes from "$data/themes.json";
 	import Nodes from "$components/Nodes.svelte";
-	import Songs from "$components/Songs.svelte";
 
-	let { id, heading, years, coverImg, nodes, songs } = $props();
+	let { id, heading, years, nodes } = $props();
 
 	const style = Object.entries(themes[id] || {})
 		.map(([key, value]) => `--${key}: ${value}`)
@@ -19,12 +18,11 @@
 	<h2>{heading}</h2>
 
 	<Nodes {id} {nodes} />
-	<!-- <Songs {songs} /> -->
 </section>
 
 <style>
 	section {
-		padding: 0 2rem;
+		padding: 10rem 2rem;
 		font-family: var(--font-body);
 		background: linear-gradient(to bottom, var(--background));
 	}

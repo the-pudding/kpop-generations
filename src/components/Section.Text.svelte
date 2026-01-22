@@ -1,7 +1,7 @@
 <script>
 	import { getContext, onMount } from "svelte";
 
-	let { nodeId, speaker, text, offset } = $props();
+	let { nodeId, speaker, text, song } = $props();
 	const { registerNode } = getContext("nodeRegistry");
 
 	let el;
@@ -11,27 +11,51 @@
 	});
 </script>
 
-<div
-	id={nodeId}
-	class="text-block"
-	class:left={speaker === "eunice"}
-	class:right={speaker === "minji"}
-	bind:this={el}
->
-	<div class="speaker">
-		{speaker}
+<div class="text-wrapper">
+	{#if song}
+		<div class="song">
+			<div class="artist">{song.artist}</div>
+			<div class="title">{song.title}</div>
+		</div>
+	{/if}
+
+	<div
+		id={nodeId}
+		class="text-block"
+		class:left={speaker === "eunice"}
+		class:right={speaker === "minji"}
+		bind:this={el}
+	>
+		<div class="speaker">
+			{speaker}
+		</div>
+		{@html text}
 	</div>
-	{@html text}
 </div>
 
 <style>
+	.text-wrapper {
+		display: flex;
+		align-items: flex-start;
+		margin: 3rem 0;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+
+	.song {
+		transform: translate(0, 50px);
+	}
+
+	.artist {
+		font-weight: bold;
+	}
+
 	.text-block {
 		--speaker-overhang: 1.75rem;
 
 		border: var(--border);
 		border-radius: var(--border-radius);
 		box-shadow: var(--box-shadow);
-		margin: 3rem 0;
 		padding: 2rem;
 		width: calc(100% - var(--speaker-overhang));
 		max-width: 666px;
@@ -76,5 +100,14 @@
 		right: 0;
 		transform: translate(var(--speaker-overhang), -50%);
 		background: var(--minji-text-bg);
+	}
+
+	.song {
+		background: var(--song-bg);
+		width: 150px;
+		padding: 1rem;
+		border: var(--border);
+		box-shadow: var(--box-shadow);
+		border-radius: var(--border-radius);
 	}
 </style>
