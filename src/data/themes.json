@@ -56,7 +56,7 @@
 	},
 
 	"fifth-gen": {
-		"background": "#5F5348, #4167A1 50%, #245D25 98%, #E6E4FF",
+		"background": "#5F5348, #4167A1 50%, #245D25",
 		"heading-color": "#CCFFED",
 		"heading-shadow": "",
 		"line-stroke": "#CCFFED",
