@@ -129,6 +129,7 @@
 <style>
 	.content {
 		position: relative;
+		width: 100%;
 		max-width: 900px;
 		margin: 0 auto;
 		display: flex;

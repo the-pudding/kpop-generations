@@ -141,4 +141,12 @@
 		box-shadow: var(--box-shadow);
 		border-radius: var(--border-radius);
 	}
+
+	@media (max-width: 600px) {
+		.speaker,
+		.text-block,
+		.song {
+			font-size: var(--14px);
+		}
+	}
 </style>

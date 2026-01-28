@@ -185,7 +185,12 @@
 	.text {
 		font-size: var(--20px, 20px);
 		text-align: center;
+		width: 100%;
 		max-width: 900px;
+	}
+
+	.text a {
+		white-space: nowrap;
 	}
 
 	.images {

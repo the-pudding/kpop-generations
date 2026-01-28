@@ -110,6 +110,7 @@
 	.circle {
 		height: 6px;
 		width: 6px;
+		flex-shrink: 0;
 		transform: translate(0, -1px); /* to look more centered */
 		border-radius: 50%;
 		display: inline-block;
@@ -131,6 +132,25 @@
 		header {
 			display: flex;
 			justify-content: space-between;
+		}
+	}
+
+	@media (max-width: 700px) {
+		header {
+			justify-content: center;
+		}
+
+		.wordmark {
+			display: none;
+		}
+
+		nav {
+			margin: 0;
+		}
+
+		li {
+			text-align: center;
+			line-height: 1.2;
 		}
 	}
 </style>

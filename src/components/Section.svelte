@@ -66,17 +66,31 @@
 
 	h2 {
 		font-size: 92px;
+		width: 100%;
 		max-width: 1000px;
+		line-height: 1.2;
 		margin: 2rem 0;
-		transform: translate(
-			calc(-0.5 * var(--years-overhang)),
-			0
-		); /* to look more centered */
 		font-weight: bold;
 		text-align: center;
 		text-transform: uppercase;
 		font-family: "ABC Maxi Plus";
 		color: var(--heading-color);
 		text-shadow: var(--heading-shadow);
+	}
+
+	@media (max-width: 600px) {
+		h2 {
+			font-size: 64px;
+		}
+
+		.years {
+			font-size: var(--14px);
+		}
+	}
+
+	@media (max-width: 400px) {
+		h2 {
+			font-size: 48px;
+		}
 	}
 </style>

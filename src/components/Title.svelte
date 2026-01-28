@@ -17,7 +17,7 @@
 <style>
 	.title {
 		height: calc(100svh);
-		padding-top: 4rem;
+		padding: 4rem 1rem 1rem 1rem;
 		background: linear-gradient(
 			to bottom,
 			#f6f5ff,
@@ -58,5 +58,21 @@
 
 	.author:nth-of-type(2) {
 		margin-bottom: 1rem;
+	}
+
+	@media (max-width: 600px) {
+		.author {
+			font-size: var(--12px);
+		}
+
+		.author:nth-of-type(1) {
+			font-size: var(--16px);
+		}
+	}
+
+	@media (max-width: 400px) {
+		.author:nth-of-type(1) {
+			font-size: var(--14px);
+		}
 	}
 </style>
