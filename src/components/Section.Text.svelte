@@ -1,4 +1,5 @@
 <script>
+	import Song from "$components/Song.svelte";
 	import themes from "$data/themes.json";
 	import { getContext, onMount } from "svelte";
 
@@ -11,13 +12,6 @@
 		registerNode(nodeId, el);
 	});
 </script>
-
-{#snippet songBubble(artist, title)}
-	<div class="song">
-		<div class="artist">{artist}</div>
-		<div class="title">{title}</div>
-	</div>
-{/snippet}
 
 {#snippet textBlock(withMargin)}
 	<div
@@ -39,13 +33,13 @@
 {#if song}
 	<div class="text-wrapper">
 		{#if song && speaker === "minji"}
-			{@render songBubble(song.artist, song.title)}
+			<Song {...song} />
 		{/if}
 
 		{@render textBlock(false)}
 
 		{#if song && speaker === "eunice"}
-			{@render songBubble(song.artist, song.title)}
+			<Song {...song} />
 		{/if}
 	</div>
 {:else}
@@ -59,14 +53,6 @@
 		margin: 3rem 0;
 		justify-content: space-between;
 		gap: 1rem;
-	}
-
-	.song {
-		transform: translate(0, 50px);
-	}
-
-	.artist {
-		font-weight: bold;
 	}
 
 	.text-block {
@@ -132,20 +118,9 @@
 		box-shadow: var(--minji-box-shadow, var(--box-shadow));
 	}
 
-	.song {
-		background: var(--song-bg, var(--text-bg));
-		color: var(--text-color);
-		width: 150px;
-		padding: 1rem;
-		border: 2px solid var(--border);
-		box-shadow: var(--box-shadow);
-		border-radius: var(--border-radius);
-	}
-
 	@media (max-width: 600px) {
 		.speaker,
-		.text-block,
-		.song {
+		.text-block {
 			font-size: var(--14px);
 		}
 	}
