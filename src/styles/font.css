@@ -1,6 +1,7 @@
 @font-face {
 	font-family: "ABC Diatype";
-	src: url("assets/font/ABCDiatypeSemi-Mono-Regular-Trial.woff") format("woff2");
+	src: url("https://pudding.cool/assets/fonts/abc-diatype/ABCDiatypeSemi-Mono-Regular-Trial.woff2")
+		format("woff2");
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal;
@@ -9,7 +10,8 @@
 
 @font-face {
 	font-family: "ABC Diatype";
-	src: url("assets/font/ABCDiatypeSemi-Mono-Bold-Trial.woff2") format("woff2");
+	src: url("https://pudding.cool/assets/fonts/abc-diatype/ABCDiatypeSemi-Mono-Bold-Trial.woff2")
+		format("woff2");
 	font-weight: 700;
 	font-style: normal;
 	font-stretch: normal;
@@ -18,12 +20,16 @@
 
 @font-face {
 	font-family: "ABC Maxi Plus";
-	src: url("assets/font/ABCMaxiPlusVariable-Trial.woff2") format("woff2");
+	src: url("https://pudding.cool/assets/fonts/abc-diatype/ABCMaxiPlusVariable-Trial.woff2")
+		format("woff2");
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal;
 	font-display: swap;
 }
+
+/*****
+*/
 
 @font-face {
 	font-family: "Atlas Grotesk";
