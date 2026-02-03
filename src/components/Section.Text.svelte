@@ -26,7 +26,14 @@
 		<div class="speaker">
 			{speaker}
 		</div>
-		{@html text}
+
+		{#if Array.isArray(text)}
+			{#each text as { value }}
+				<p>{@html value}</p>
+			{/each}
+		{:else}
+			<p>{@html text}</p>
+		{/if}
 	</div>
 {/snippet}
 
