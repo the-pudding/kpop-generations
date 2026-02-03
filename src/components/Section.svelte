@@ -68,7 +68,7 @@
 		font-size: 92px;
 		width: 100%;
 		max-width: 1000px;
-		line-height: 1.2;
+		line-height: 1.1;
 		margin: 2rem 0;
 		font-weight: bold;
 		text-align: center;

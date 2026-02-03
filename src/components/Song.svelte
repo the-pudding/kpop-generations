@@ -115,6 +115,7 @@
 		object-fit: cover;
 		width: 100%;
 		height: 100%;
+		border-radius: calc(var(--border-radius) / 2);
 	}
 
 	button.playpause {

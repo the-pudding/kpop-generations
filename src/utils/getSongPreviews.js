@@ -5,8 +5,6 @@ async function getApplePreview(track, artist) {
 	const res = await fetch(url);
 	const data = await res.json();
 
-	console.log(data.results);
-
 	if (!data.results.length) return null;
 
 	return {
@@ -16,9 +14,18 @@ async function getApplePreview(track, artist) {
 }
 
 const songs = [
-	{ track: "No.1", artist: "BoA" },
-	{ track: "I Know (Club Mix)", artist: "Seotaiji and Boys" },
-	{ track: "U", artist: "Super Junior" }
+	// { track: "No.1", artist: "BoA" },
+	// { track: "I Know (Club Mix)", artist: "Seotaiji and Boys" },
+	// { track: "U", artist: "Super Junior" },
+	{ track: "Lies", artist: "Big Bang" },
+	{ track: "Replay", artist: "SHINee" },
+	{ track: "Growl", artist: "EXO" },
+	{ track: "TT", artist: "TWICE" },
+	{ track: "DNA", artist: "BTS" },
+	{ track: "Dynamite", artist: "BTS" },
+	{ track: "How You Like That", artist: "BLACKPINK" },
+	{ track: "Golden", artist: "HUNTR/X" },
+	{ track: "Magnetic", artist: "ILLIT" }
 ];
 
 const getPreviews = async () => {
