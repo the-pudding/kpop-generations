@@ -7,7 +7,39 @@
 	let { artist, title, id } = $props();
 
 	let audioEl = $state();
+	let currentTime = $state(0);
 	let paused = $state(true);
+	let duration = $state(0);
+
+	let progress = $derived.by(() => {
+		if (!audioEl || duration === 0) return 0;
+		return currentTime / duration;
+	});
+	const radius = 10;
+	const circumference = 2 * Math.PI * radius;
+	const dashOffset = $derived(circumference * (1 - progress));
+
+	$effect(() => {
+		const circleEl = document.querySelector(
+			`#${id} button.${paused ? "play" : "pause"} svg circle`
+		);
+		if (!circleEl) return;
+
+		if (progress === 0) {
+			circleEl.style.strokeDasharray = "none";
+			circleEl.style.strokeDashoffset = "0";
+			return;
+		}
+
+		circleEl.style.strokeDasharray = circumference;
+		circleEl.style.strokeDashoffset = dashOffset;
+	});
+
+	const reset = () => {
+		if (!audioEl) return;
+		if (!paused) audioEl.pause();
+		audioEl.currentTime = 0;
+	};
 
 	const onClick = () => {
 		if (paused) {
@@ -25,24 +57,26 @@
 	};
 </script>
 
-<div
-	class="song"
-	use:inView
-	onexit={() => {
-		if (!paused) {
-			audioEl.pause();
-		}
-	}}
->
+<div {id} class="song" use:inView onexit={reset}>
 	<div class="cover-art">
 		{#if id}
 			<img
 				src={`assets/img/songs/${id}.jpg`}
 				alt={`Cover art for ${title} by ${artist}`}
 			/>
-			<audio bind:this={audioEl} src={`assets/audio/${id}.m4a`} bind:paused
+			<audio
+				bind:this={audioEl}
+				src={`assets/audio/${id}.m4a`}
+				bind:paused
+				bind:currentTime
+				bind:duration
 			></audio>
-			<button class="playpause" onclick={onClick}>
+			<button
+				class="playpause"
+				class:play={paused}
+				class:pause={!paused}
+				onclick={onClick}
+			>
 				{#if paused}
 					{@html playSvg}
 				{:else}
@@ -52,9 +86,8 @@
 		{/if}
 	</div>
 
-	<div class="player">
-		<div class="artist">{artist}</div>
-		<div class="title">"{title}"</div>
+	<div class="text">
+		<div><strong>{artist}</strong><br />"{title}"</div>
 	</div>
 </div>
 
@@ -84,10 +117,6 @@
 		height: 100%;
 	}
 
-	.artist {
-		font-weight: bold;
-	}
-
 	button.playpause {
 		position: absolute;
 		height: 50px;
@@ -101,7 +130,7 @@
 		color: var(--color-bg);
 	}
 
-	:global(
+	/* :global(
 		button.playpause svg circle,
 		button.playpause svg line,
 		button.playpause svg polygon
@@ -109,7 +138,7 @@
 		transition:
 			fill calc(var(--1s) * 0.2),
 			stroke calc(var(--1s) * 0.2);
-	}
+	} */
 
 	:global(button.playpause:hover svg circle, button.playpause:hover svg line) {
 		stroke: var(--color-gray-200);
