@@ -1,12 +1,7 @@
 <script>
-	import themes from "$data/themes.json";
-	import { getContext, onMount } from "svelte";
 	import _ from "lodash";
 
-	let { title, nodeId, sectionId } = $props();
-	const { registerNode } = getContext("nodeRegistry");
-
-	let el;
+	let { title } = $props();
 
 	let fakeData = [];
 	for (let i = 0; i < 33; i++) {
@@ -77,7 +72,7 @@
 		const { gen, year, group } = e.target.dataset;
 		tooltipData = { gen, year, group };
 
-		const leftSide = e.target.offsetLeft < el.clientWidth / 2;
+		const leftSide = e.target.offsetLeft < window.innerWidth / 2;
 		tooltipX = leftSide ? e.target.offsetLeft + 20 : e.target.offsetLeft - 220;
 		tooltipY = e.target.offsetTop + 20;
 	};
@@ -87,76 +82,52 @@
 		tooltipX = undefined;
 		tooltipY = undefined;
 	};
-
-	onMount(() => {
-		registerNode(nodeId, el);
-	});
 </script>
 
-<div
-	id={nodeId}
-	bind:this={el}
-	class="debut-chart"
-	style={themes[sectionId]["text-style"]}
->
-	<h3>{title}</h3>
+<h3>{title}</h3>
 
-	<div class="gens">
-		{#each groups as { id, name, years }}
-			{@const data = groupedData[id]}
-			{#if data}
-				<div class="gen">
-					<div class="title">
-						<strong>{name}</strong> <span class="years">{years}</span>
-					</div>
-					<div class="count">{data.length} groups</div>
-					<div class="dots">
-						{#each data as d}
-							<div
-								class="dot"
-								class:active={tooltipData.gen == d.gen &&
-									tooltipData.year == d.year &&
-									tooltipData.group == d.group}
-								data-gen={d.gen}
-								data-year={d.year}
-								data-group={d.group}
-								onmouseenter={mouseEnter}
-								onmouseleave={mouseLeave}
-							/>
-						{/each}
-					</div>
+<div class="gens">
+	{#each groups as { id, name, years }}
+		{@const data = groupedData[id]}
+		{#if data}
+			<div class="gen">
+				<div class="title">
+					<strong>{name}</strong> <span class="years">{years}</span>
 				</div>
-			{/if}
-		{/each}
-	</div>
-
-	<div
-		class="tooltip"
-		class:visible={tooltipData && tooltipX && tooltipY}
-		style:top={`${tooltipY}px`}
-		style:left={`${tooltipX}px`}
-	>
-		{JSON.stringify(tooltipData)}
-	</div>
+				<div class="count">{data.length} groups</div>
+				<div class="dots">
+					{#each data as d}
+						<div
+							class="dot"
+							class:active={tooltipData.gen == d.gen &&
+								tooltipData.year == d.year &&
+								tooltipData.group == d.group}
+							data-gen={d.gen}
+							data-year={d.year}
+							data-group={d.group}
+							onmouseenter={mouseEnter}
+							onmouseleave={mouseLeave}
+						/>
+					{/each}
+				</div>
+			</div>
+		{/if}
+	{/each}
+</div>
+<div
+	class="tooltip"
+	class:visible={tooltipData && tooltipX && tooltipY}
+	style:top={`${tooltipY}px`}
+	style:left={`${tooltipX}px`}
+>
+	{JSON.stringify(tooltipData)}
 </div>
 
 <style>
-	.debut-chart {
-		position: relative;
-		width: 100%;
-		background: var(--text-bg);
-		border: 2px solid var(--border);
-		border-radius: var(--border-radius);
-		outline-color: var(--border);
-		box-shadow: var(--box-shadow);
-		color: var(--text-color);
-		margin: 3rem 0;
-		padding: 2rem;
-	}
-
 	h3 {
 		text-transform: uppercase;
 		text-align: center;
+		font-weight: bold;
 	}
 
 	.gens {

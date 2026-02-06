@@ -4,7 +4,7 @@
 	import Text from "$components/Section.Text.svelte";
 	import Image from "$components/Section.Image.svelte";
 	import Images from "$components/Section.Images.svelte";
-	import DebutChart from "$components/Section.DebutChart.svelte";
+	import Chart from "$components/Section.Chart.svelte";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 	// import connections from "$data/connections.json";
 	let dimensions = new useWindowDimensions();
@@ -15,7 +15,7 @@
 		Text,
 		Image,
 		Images,
-		DebutChart
+		Chart
 	};
 
 	const curvedPath = (a, b, aSide, bSide, offset = 50) => {
