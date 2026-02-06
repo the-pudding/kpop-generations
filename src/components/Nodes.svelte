@@ -4,6 +4,7 @@
 	import Text from "$components/Section.Text.svelte";
 	import Image from "$components/Section.Image.svelte";
 	import Images from "$components/Section.Images.svelte";
+	import DebutChart from "$components/Section.DebutChart.svelte";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 	// import connections from "$data/connections.json";
 	let dimensions = new useWindowDimensions();
@@ -13,7 +14,8 @@
 	const components = {
 		Text,
 		Image,
-		Images
+		Images,
+		DebutChart
 	};
 
 	const curvedPath = (a, b, aSide, bSide, offset = 50) => {
@@ -76,6 +78,9 @@
 
 		for (const [nodeId, el] of nodeEls) {
 			const rect = el.getBoundingClientRect();
+			const outlineWidth = el.style["outline-width"] || "0px";
+			const outlineOffset = el.style["outline-offset"] || "0px";
+			const totalOffset = parseFloat(outlineWidth) + parseFloat(outlineOffset);
 
 			const toSvgSpace = (x, y) => ({
 				x: x - svgRect.left,
@@ -83,8 +88,11 @@
 			});
 
 			result[nodeId] = {
-				top: toSvgSpace(rect.left + rect.width / 2, rect.top),
-				bottom: toSvgSpace(rect.left + rect.width / 2, rect.bottom),
+				top: toSvgSpace(rect.left + rect.width / 2, rect.top - totalOffset),
+				bottom: toSvgSpace(
+					rect.left + rect.width / 2,
+					rect.bottom + totalOffset
+				),
 				left: toSvgSpace(rect.left, rect.top + rect.height / 2),
 				right: toSvgSpace(rect.right, rect.top + rect.height / 2)
 			};

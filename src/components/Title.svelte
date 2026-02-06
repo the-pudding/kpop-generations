@@ -13,23 +13,22 @@
 		const ps = document.querySelectorAll(`#title #k-pop g[id^="p"]`);
 		const p2s = document.querySelectorAll(`#title #k-pop g[id^="p-2"]`);
 
-		[ks, dashes, os, ps, p2s].forEach((group, i) => {
-			const delay = i * timeGap;
-			group.forEach((el) => {
-				el.style.transformOrigin = "center";
-				el.style.animation = `bounce-in ${duration}ms ${delay}ms both`;
-			});
-		});
+		// [ks, dashes, os, ps, p2s].forEach((group, i) => {
+		// 	const delay = i * timeGap;
+		// 	group.forEach((el) => {
+		// 		el.style.setProperty("--delay", `${delay}ms`);
+		// 		el.classList.add("bounce-in");
+		// 	});
+		// });
 
 		const stars = document.querySelectorAll(`#title #k-pop #stars *`);
 		stars.forEach((star, i) => {
 			const enterDelay = duration / 2 + i * 400;
 			const twinkleDelay = Math.random() * 400;
 
-			star.style.transformOrigin = "center";
-			star.style.transformBox = "fill-box";
-			star.style.animation = `star-enter 500ms ${enterDelay}ms both,
-			 star-twinkle 2s ${twinkleDelay}ms ease-in-out infinite`;
+			star.style.setProperty("--enter-delay", `${enterDelay}ms`);
+			star.style.setProperty("--twinkle-delay", `${twinkleDelay}ms`);
+			star.classList.add("star-enter");
 		});
 	});
 </script>
@@ -46,42 +45,50 @@
 </div>
 
 <style>
+	:global(#title svg g.bounce-in) {
+		transform-origin: center;
+		transform-box: fill-box;
+		animation: bounce-in 600ms var(--delay) both;
+	}
+
+	:global(#title svg path.star-enter) {
+		transform-origin: center;
+		transform-box: fill-box;
+		animation: star-enter 500ms var(--enter-delay) both;
+		/* star-twinkle 2s var(--twinkle-delay) ease-in-out infinite; */
+	}
+
 	@keyframes -global-bounce-in {
 		0% {
 			opacity: 0;
-			transform: scale(0.3);
+			transform: scale3d(0.3, 0.3, 1);
 		}
 		50% {
-			opacity: var(--opacity-destination);
-			transform: scale(1);
+			opacity: 1;
+			transform: scale3d(1, 1, 1);
 		}
 		70% {
-			opacity: var(--opacity-destination);
-			transform: scale(0.85);
+			transform: scale3d(0.85, 0.85, 1);
 		}
 		100% {
-			opacity: var(--opacity-destination);
-			transform: scale(1);
+			transform: scale3d(1, 1, 1);
 		}
 	}
 
 	@keyframes -global-star-enter {
 		0% {
 			opacity: 0;
-			transform: scale(0) rotate(-90deg);
-			filter: brightness(1);
+			transform: scale(0) rotate(0deg);
 		}
 
 		60% {
 			opacity: 1;
-			transform: scale(1.15) rotate(380deg);
-			filter: brightness(1.3);
+			transform: scale(1.15) rotate(180deg);
 		}
 
 		100% {
 			opacity: 1;
 			transform: scale(1) rotate(360deg);
-			filter: brightness(1);
 		}
 	}
 
