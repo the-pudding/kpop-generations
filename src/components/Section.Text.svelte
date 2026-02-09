@@ -130,5 +130,9 @@
 		.text-block {
 			font-size: var(--14px);
 		}
+
+		.text-wrapper {
+			flex-direction: column;
+		}
 	}
 </style>
