@@ -5,7 +5,7 @@
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 	let dimensions = new useWindowDimensions();
 
-	let { title, availableWidth } = $props();
+	let { title, subtitle, availableWidth } = $props();
 
 	/* ---------- constants ---------- */
 	let width = $derived(availableWidth);
@@ -80,13 +80,11 @@
 	};
 
 	/* ---------- highlight ---------- */
-	const HIGHLIGHT_TITLE = "Gangam Style";
-	const gangnamPoints = $derived(
-		series.find((s) => s.video_title === HIGHLIGHT_TITLE).points
-	);
+	const highlighted = ["See You Again", "Gangam Style", "Hello"];
 </script>
 
-<h3>{title}</h3>
+<h3>{@html title}</h3>
+<h4>{@html subtitle}</h4>
 
 {#if availableWidth > 0}
 	<svg {width} {height}>
@@ -94,12 +92,7 @@
 			<!-- y grid + labels -->
 			{#each yTicks as t, i}
 				<g transform={`translate(0,${y(t)})`}>
-					<line
-						x1="0"
-						x2={innerWidth}
-						stroke="var(--color-gray-900)"
-						stroke-dasharray={i === 0 ? 0 : 4}
-					/>
+					<line x1="0" x2={innerWidth} stroke-dasharray={i === 0 ? 0 : 4} />
 					<text x="-10" dy="0.32em" text-anchor="end" font-size="11">
 						{yLabels[t]}
 					</text>
@@ -117,52 +110,60 @@
 				{/each}
 			</g>
 
-			<!-- lines -->
-			{#each series.filter((s) => s.video_title !== HIGHLIGHT_TITLE) as s}
+			<!-- lines + labels -->
+			{#each series as s}
+				{@const highlight = highlighted.includes(s.video_title)}
+				{@const rectWidth =
+					s.video_title.length * (dimensions.width < 600 ? 8 : 9.5)}
+				{@const rectHeight = dimensions.width < 600 ? 16 : 24}
+				{@const f =
+					s.video_title === "Gangam Style" && dimensions.width > 600
+						? 19
+						: s.video_title === "Gangam Style"
+							? 15
+							: 5}
 				<path
+					class="pre"
+					class:highlight
 					d={line(s.points.filter((p) => p.cumViews <= TARGET))}
 					fill="none"
-					stroke={"rgba(0,0,0,0.25)"}
 					stroke-width={1}
 				/>
 				<path
+					class="post"
+					class:highlight
 					d={line(s.points.filter((p) => p.cumViews > TARGET))}
 					fill="none"
-					stroke={"rgba(0,0,0,0.1)"}
 					stroke-width={1}
 				/>
-			{/each}
 
-			<!-- Gangnam Style -->
-			<path
-				d={line(gangnamPoints.filter((p) => p.cumViews <= TARGET))}
-				fill="none"
-				stroke={"var(--text-color)"}
-				stroke-width={3}
-			/>
-			<path
-				d={line(gangnamPoints.filter((p) => p.cumViews > TARGET))}
-				fill="none"
-				stroke={"rgba(210, 85, 243, 0.1)"}
-				stroke-width={3}
-			/>
-			<text
-				x={x(gangnamPoints[163].date) + 10}
-				y={y(gangnamPoints[163].cumViews)}
-				fill="var(--text-color)"
-				class="gangnam-label"
-				text-anchor="middle"
-				font-weight="bold">Gangnam Style (158 days)</text
-			>
+				{#if highlight}
+					<rect
+						class="bg"
+						x={x(s.points[Math.floor(s.points.length / f)].date)}
+						y={y(s.points[Math.floor(s.points.length / f)].cumViews)}
+						width={rectWidth}
+						height={rectHeight}
+					/>
+					<text
+						class="highlight-label"
+						x={x(s.points[Math.floor(s.points.length / f)].date)}
+						y={y(s.points[Math.floor(s.points.length / f)].cumViews)}
+						>{s.video_title === "Gangam Style"
+							? "Gangnam Style"
+							: s.video_title}</text
+					>
+				{/if}
+			{/each}
 
 			<!-- 1B cutoff -->
 			<line
+				class="billion"
 				x1="0"
 				x2={innerWidth}
 				y1={y(TARGET)}
 				y2={y(TARGET)}
 				stroke-width="2"
-				stroke="var(--color-gray-900)"
 			/>
 		</g>
 	</svg>
@@ -172,12 +173,66 @@
 	h3 {
 		font-size: var(--16px);
 		text-transform: uppercase;
-		text-align: center;
-		font-weight: bold;
+		align-self: start;
+		padding-left: 50px;
+		margin-bottom: 0;
 	}
 
-	.gangnam-label {
+	h4 {
+		font-size: var(--12px);
+		align-self: start;
+		padding-left: 50px;
+		margin-top: 0.5rem;
+		color: var(--color-gray-600);
+	}
+
+	line {
+		stroke: var(--color-gray-400);
+	}
+
+	line.billion {
+		stroke: var(--color-gray-900);
+	}
+
+	text {
+		fill: var(--color-gray-600);
+	}
+
+	text.highlight-label {
+		fill: var(--text-color);
 		font-size: var(--14px);
+		font-weight: bold;
+		text-anchor: middle;
+		transform-box: fill-box;
+		transform-origin: center;
+		transform: rotate(279deg);
+	}
+
+	rect.bg {
+		fill: #fffafc;
+		transform-box: fill-box;
+		transform-origin: center;
+		transform: translate(-50%, -60%) rotate(279deg);
+	}
+
+	path.pre {
+		stroke: rgba(0, 0, 0, 0.15);
+	}
+
+	path.post {
+		stroke: rgba(0, 0, 0, 0.05);
+	}
+
+	path.highlight {
+		stroke-width: 2.5;
+	}
+
+	path.highlight.pre {
+		stroke: var(--text-color);
+	}
+
+	path.highlight.post {
+		stroke: rgba(210, 85, 243, 0.2);
 	}
 
 	@media (max-width: 600px) {
@@ -185,7 +240,7 @@
 			font-size: var(--14px);
 		}
 
-		.gangnam-label {
+		text.highlight-label {
 			font-size: var(--12px);
 		}
 	}
