@@ -6,8 +6,6 @@
 
 	const current = getContext("current");
 
-	const sectionIds = copy.sections.map((section) => section.id);
-
 	const onClick = (id) => {
 		const el = document.getElementById(id);
 		if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -23,12 +21,15 @@
 
 	<nav>
 		<ul>
-			{#each sectionIds as id}
+			{#each copy.sections as { id, years }}
 				{@const active = current.section === id}
 				{@const title = _.upperCase(id)}
 				<li class:active onclick={() => onClick(id)}>
 					<span class="circle"></span>
-					{title}
+					<div class="label">
+						<div>{title}</div>
+						<div class="years">{years}</div>
+					</div>
 				</li>
 			{/each}
 		</ul>
@@ -93,7 +94,7 @@
 	nav li {
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: 6px;
 		opacity: 0.4;
 		transition: opacity 0.2s;
 	}
@@ -105,6 +106,17 @@
 
 	nav li.active {
 		opacity: 1;
+	}
+
+	.label {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.years {
+		font-size: 11px;
+		white-space: nowrap;
 	}
 
 	.circle {
@@ -151,6 +163,12 @@
 		li {
 			text-align: center;
 			line-height: 1.2;
+		}
+	}
+
+	@media (max-width: 550px) {
+		.years {
+			display: none;
 		}
 	}
 </style>
