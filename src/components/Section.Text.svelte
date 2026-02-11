@@ -134,5 +134,9 @@
 		.text-wrapper {
 			flex-direction: column;
 		}
+
+		.text-block {
+			padding: 1rem 1.5rem;
+		}
 	}
 </style>

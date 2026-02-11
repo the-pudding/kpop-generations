@@ -240,6 +240,11 @@
 			font-size: var(--14px);
 		}
 
+		h3,
+		h4 {
+			padding-left: 12px;
+		}
+
 		text.highlight-label {
 			font-size: var(--12px);
 		}

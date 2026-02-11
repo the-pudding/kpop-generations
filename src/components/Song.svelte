@@ -131,16 +131,6 @@
 		color: var(--color-bg);
 	}
 
-	/* :global(
-		button.playpause svg circle,
-		button.playpause svg line,
-		button.playpause svg polygon
-	) {
-		transition:
-			fill calc(var(--1s) * 0.2),
-			stroke calc(var(--1s) * 0.2);
-	} */
-
 	:global(button.playpause:hover svg circle, button.playpause:hover svg line) {
 		stroke: var(--color-gray-200);
 	}
@@ -148,5 +138,23 @@
 	:global(button.playpause:hover svg polygon) {
 		stroke: var(--color-gray-200);
 		fill: var(--color-gray-200);
+	}
+
+	@media (max-width: 600px) {
+		.song {
+			font-size: var(--14px);
+			transform: translate(0, 0);
+			margin: 0 auto;
+		}
+
+		:global(
+			section#third-gen .song,
+			section#fourth-gen .song,
+			section#fifth-gen .song
+		) {
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+		}
 	}
 </style>

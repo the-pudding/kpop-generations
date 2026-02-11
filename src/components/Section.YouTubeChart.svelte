@@ -18,14 +18,18 @@
 			<tr>
 				<td>{rank}</td>
 				<td>{artist} - {song}</td>
-				<td class="nowrap">
+				<td class="views">
 					{views} views
 					<div
 						class="bar"
 						style:width={`${xScale(+views.replace("M", ""))}%`}
 					></div>
 				</td>
-				<td class="nowrap"><a href={link} target="_blank">Watch Video</a></td>
+				<td class="video-button"
+					><a href={link} target="_blank"
+						>Watch <span class="video">Video</span></a
+					></td
+				>
 			</tr>
 		{/each}
 	</tbody>
@@ -51,7 +55,7 @@
 	}
 
 	.bar {
-		position: absolute;
+		/* position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -59,10 +63,14 @@
 		height: 100%;
 		pointer-events: none;
 		border-top-right-radius: 4px;
-		border-bottom-right-radius: 4px;
+		border-bottom-right-radius: 4px; */
 	}
 
-	.nowrap {
+	.views {
+		white-space: nowrap;
+	}
+
+	.video-button {
 		white-space: nowrap;
 	}
 
@@ -72,5 +80,23 @@
 		box-shadow: var(--box-shadow);
 		padding: 0.5rem 1rem;
 		text-transform: uppercase;
+	}
+
+	@media (max-width: 600px) {
+		table {
+			font-size: var(--14px);
+		}
+
+		a {
+			padding: 0.25rem 0.5rem;
+		}
+
+		a .video {
+			display: none;
+		}
+
+		.views {
+			white-space: normal;
+		}
 	}
 </style>

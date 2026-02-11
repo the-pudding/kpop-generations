@@ -58,4 +58,10 @@
 	.chart#second-gen-7 {
 		background: #fffafc;
 	}
+
+	@media (max-width: 600px) {
+		:global(.chart h3) {
+			font-size: var(--20px);
+		}
+	}
 </style>

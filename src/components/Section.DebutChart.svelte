@@ -170,7 +170,6 @@
 		box-shadow: var(--box-shadow);
 		padding: 0.5rem;
 		width: fit-content;
-		max-width: 200px;
 		visibility: hidden;
 	}
 

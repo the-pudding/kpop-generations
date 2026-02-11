@@ -1,5 +1,7 @@
 <script>
 	import copy from "$data/copy.json";
+	import growingUpSvg from "$svg/growing-up.svg";
+	import withSvg from "$svg/with.svg";
 	import kpopSvg from "$svg/k-pop.svg";
 	import { onMount } from "svelte";
 
@@ -26,15 +28,17 @@
 			const enterDelay = duration / 2 + i * 400;
 			const twinkleDelay = Math.random() * 400;
 
-			star.style.setProperty("--enter-delay", `${enterDelay}ms`);
-			star.style.setProperty("--twinkle-delay", `${twinkleDelay}ms`);
-			star.classList.add("star-enter");
+			// star.style.setProperty("--enter-delay", `${enterDelay}ms`);
+			// star.style.setProperty("--twinkle-delay", `${twinkleDelay}ms`);
+			// star.classList.add("star-enter");
 		});
 	});
 </script>
 
 <div id="title">
 	<div class="kpop">
+		{@html withSvg}
+		{@html growingUpSvg}
 		{@html kpopSvg}
 	</div>
 	<div class="byline">
@@ -54,8 +58,26 @@
 	:global(#title svg path.star-enter) {
 		transform-origin: center;
 		transform-box: fill-box;
-		animation: star-enter 500ms var(--enter-delay) both;
-		/* star-twinkle 2s var(--twinkle-delay) ease-in-out infinite; */
+		animation:
+			star-enter 500ms var(--enter-delay) both,
+			star-twinkle 2s var(--twinkle-delay) ease-in-out infinite;
+	}
+
+	:global(svg#title-growing-up, svg#title-with) {
+		position: absolute;
+		top: 0;
+		transform: translate(0, -70%);
+		width: fit-content;
+	}
+
+	:global(svg#title-growing-up) {
+		height: 100px;
+		left: 24%;
+	}
+
+	:global(svg#title-with) {
+		height: 70px;
+		left: 51%;
 	}
 
 	@keyframes -global-bounce-in {
@@ -122,6 +144,7 @@
 	}
 
 	.kpop {
+		position: relative;
 		max-width: 1000px;
 		margin: 0 auto;
 	}
