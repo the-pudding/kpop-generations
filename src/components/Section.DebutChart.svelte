@@ -1,45 +1,15 @@
 <script>
+	import data from "$data/debuts.csv";
 	import _ from "lodash";
 
 	let { title } = $props();
 
-	let fakeData = [];
-	for (let i = 0; i < 33; i++) {
-		fakeData = [
-			...fakeData,
-			{ gen: 1, year: 1995 + i, group: `Group ${i + 1}` }
-		];
-	}
-	for (let i = 0; i < 81; i++) {
-		fakeData = [
-			...fakeData,
-			{ gen: 2, year: 1995 + i, group: `Group ${i + 1}` }
-		];
-	}
-	for (let i = 0; i < 327; i++) {
-		fakeData = [
-			...fakeData,
-			{ gen: 3, year: 1995 + i, group: `Group ${i + 1}` }
-		];
-	}
-	for (let i = 0; i < 347; i++) {
-		fakeData = [
-			...fakeData,
-			{ gen: 4, year: 1995 + i, group: `Group ${i + 1}` }
-		];
-	}
-	for (let i = 0; i < 131; i++) {
-		fakeData = [
-			...fakeData,
-			{ gen: 5, year: 1995 + i, group: `Group ${i + 1}` }
-		];
-	}
-
 	let tooltipData = $state({});
 	let tooltipX = $state();
 	let tooltipY = $state();
+	let tooltipTransform = $state();
 
-	const groupedData = _.groupBy(fakeData, "gen");
+	const groupedData = _.groupBy(data, "gen");
 	const groups = [
 		{
 			id: 1,
@@ -69,22 +39,32 @@
 	];
 
 	const mouseEnter = (e) => {
-		const { gen, year, group } = e.target.dataset;
-		tooltipData = { gen, year, group };
-
+		const { gen, year, group, favorites } = e.target.dataset;
+		tooltipData = { gen, year, group, favorites };
 		const leftSide = e.target.offsetLeft < window.innerWidth / 2;
-		tooltipX = leftSide ? e.target.offsetLeft + 20 : e.target.offsetLeft - 220;
+		tooltipX = e.target.offsetLeft + 20;
 		tooltipY = e.target.offsetTop + 20;
+		if (!leftSide) {
+			tooltipTransform = "translate(-100%, 0)";
+		}
 	};
+
+	$inspect({ tooltipData });
 
 	const mouseLeave = () => {
 		tooltipData = {};
 		tooltipX = undefined;
 		tooltipY = undefined;
+		tooltipTransform = undefined;
 	};
 </script>
 
 <h3>{title}</h3>
+
+<div class="legend">
+	<div class="dot both-fave" />
+	<div>Minji and Eunice's favorites!</div>
+</div>
 
 <div class="gens">
 	{#each groups as { id, name, years }}
@@ -96,15 +76,20 @@
 				</div>
 				<div class="count">{data.length} groups</div>
 				<div class="dots">
-					{#each data as d}
+					{#each data as { gen, year, group, favorites }}
 						<div
 							class="dot"
-							class:active={tooltipData.gen == d.gen &&
-								tooltipData.year == d.year &&
-								tooltipData.group == d.group}
-							data-gen={d.gen}
-							data-year={d.year}
-							data-group={d.group}
+							class:active={tooltipData.gen == gen &&
+								tooltipData.year == year &&
+								tooltipData.group == group}
+							class:minji-fave={favorites === "Minji"}
+							class:eunice-fave={favorites === "Eunice"}
+							class:both-fave={favorites.includes("Minji") &&
+								favorites.includes("Eunice")}
+							data-gen={gen}
+							data-year={year}
+							data-group={group}
+							data-favorites={favorites}
 							onmouseenter={mouseEnter}
 							onmouseleave={mouseLeave}
 						/>
@@ -119,8 +104,13 @@
 	class:visible={tooltipData && tooltipX && tooltipY}
 	style:top={`${tooltipY}px`}
 	style:left={`${tooltipX}px`}
+	style:transform={tooltipTransform}
 >
-	{JSON.stringify(tooltipData)}
+	<div class="group">{tooltipData.group}</div>
+	<div class="year">Debuted in {tooltipData.year}</div>
+	{#if tooltipData.favorites}
+		<div class="favorites">({tooltipData.favorites}'s favorite!)</div>
+	{/if}
 </div>
 
 <style>
@@ -160,8 +150,14 @@
 		background: var(--text-color);
 	}
 
-	.dot.active {
+	.dot.minji-fave,
+	.dot.eunice-fave,
+	.dot.both-fave {
 		background: var(--minji-text-color);
+	}
+
+	.dot.active {
+		background: #fffafc;
 	}
 
 	.tooltip {
@@ -173,12 +169,37 @@
 		border-radius: calc(var(--border-radius) / 2);
 		box-shadow: var(--box-shadow);
 		padding: 0.5rem;
-		width: 200px;
+		width: fit-content;
+		max-width: 200px;
 		visibility: hidden;
 	}
 
 	.tooltip.visible {
 		visibility: visible;
+	}
+
+	.legend {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		font-size: var(--12px);
+		color: var(--minji-text-color);
+		margin-bottom: 16px;
+	}
+
+	.group {
+		font-size: var(--20px);
+		font-weight: bold;
+		white-space: nowrap;
+	}
+
+	.year {
+		white-space: nowrap;
+		font-size: var(--12px);
+	}
+
+	.favorites {
+		font-size: var(--12px);
 	}
 
 	@media (max-width: 600px) {
