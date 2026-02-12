@@ -1,8 +1,6 @@
 <script>
 	import copy from "$data/copy.json";
-	import growingUpSvg from "$svg/growing-up.svg";
-	import withSvg from "$svg/with.svg";
-	import kpopSvg from "$svg/k-pop.svg";
+	import titleSvg from "$svg/title.svg";
 	import { onMount } from "svelte";
 
 	onMount(() => {
@@ -36,10 +34,9 @@
 </script>
 
 <div id="title">
-	<div class="kpop">
-		{@html withSvg}
-		{@html growingUpSvg}
-		{@html kpopSvg}
+	<h1 class="sr-only">Growing Up with K-Pop</h1>
+	<div class="svg-wrapper">
+		{@html titleSvg}
 	</div>
 	<div class="byline">
 		{#each copy.byline as author}
@@ -49,6 +46,52 @@
 </div>
 
 <style>
+	#title {
+		height: calc(100svh);
+		padding: 4rem 1rem 1rem 1rem;
+		background: linear-gradient(
+			to bottom,
+			#f6f5ff,
+			#c0baff 34%,
+			#c0baff 81%,
+			#6cb0f9
+		);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 3rem;
+	}
+
+	.svg-wrapper {
+		position: relative;
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+
+	.byline {
+		text-transform: uppercase;
+		color: #f2fafe;
+		background: rgba(242, 250, 254, 0.1);
+		box-shadow: inset 0px 3px 40px #ccffed;
+		border-radius: var(--border-radius);
+		padding: 1.5rem;
+		width: fit-content;
+		text-align: center;
+	}
+
+	.author {
+		font-size: var(--14px);
+	}
+
+	.author:nth-of-type(1) {
+		font-size: var(--18px);
+	}
+
+	.author:nth-of-type(2) {
+		margin-bottom: 1rem;
+	}
+
 	:global(#title svg g.bounce-in) {
 		transform-origin: center;
 		transform-box: fill-box;
@@ -61,23 +104,6 @@
 		animation:
 			star-enter 500ms var(--enter-delay) both,
 			star-twinkle 2s var(--twinkle-delay) ease-in-out infinite;
-	}
-
-	:global(svg#title-growing-up, svg#title-with) {
-		position: absolute;
-		top: 0;
-		transform: translate(0, -70%);
-		width: fit-content;
-	}
-
-	:global(svg#title-growing-up) {
-		height: 100px;
-		left: 24%;
-	}
-
-	:global(svg#title-with) {
-		height: 70px;
-		left: 51%;
 	}
 
 	@keyframes -global-bounce-in {
@@ -124,52 +150,6 @@
 		100% {
 			transform: rotate(-4deg) scale(1);
 		}
-	}
-
-	#title {
-		height: calc(100svh);
-		padding: 4rem 1rem 1rem 1rem;
-		background: linear-gradient(
-			to bottom,
-			#f6f5ff,
-			#c0baff 34%,
-			#c0baff 81%,
-			#6cb0f9
-		);
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 3rem;
-	}
-
-	.kpop {
-		position: relative;
-		max-width: 1000px;
-		margin: 0 auto;
-	}
-
-	.byline {
-		text-transform: uppercase;
-		color: #f2fafe;
-		background: rgba(242, 250, 254, 0.1);
-		box-shadow: inset 0px 3px 40px #ccffed;
-		border-radius: var(--border-radius);
-		padding: 1.5rem;
-		width: fit-content;
-		text-align: center;
-	}
-
-	.author {
-		font-size: var(--14px);
-	}
-
-	.author:nth-of-type(1) {
-		font-size: var(--18px);
-	}
-
-	.author:nth-of-type(2) {
-		margin-bottom: 1rem;
 	}
 
 	@media (max-width: 600px) {

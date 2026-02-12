@@ -19,7 +19,7 @@
 		>
 	</div>
 
-	<nav>
+	<nav class:visible={current.section !== undefined}>
 		<ul>
 			{#each copy.sections as { id, years }}
 				{@const active = current.section === id}
@@ -82,6 +82,12 @@
 		font-size: var(--12px);
 		font-weight: bold;
 		margin-left: auto;
+		opacity: 0;
+		transition: opacity calc(var(--1s) * 0.3);
+	}
+
+	nav.visible {
+		opacity: 1;
 	}
 
 	nav ul {
