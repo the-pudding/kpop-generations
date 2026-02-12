@@ -30,12 +30,12 @@
 	},
 
 	"third-gen": {
-		"background": "#000000 16%, #D04A4A 73%, #FFBAE5 96%, #9CFF5E",
+		"background": "#000000 50%, #D04A4A",
 		"heading-color": "#FFA9FF",
 		"heading-shadow": "",
 		"line-stroke": "#FFA9FF",
 		"text-color": "#FFA9FF",
-		"text-bg": "transparent",
+		"text-bg": "",
 		"border": "#FFA9FF",
 		"box-shadow": "",
 
@@ -45,7 +45,7 @@
 	},
 
 	"fourth-gen": {
-		"background": "#9EFD61, #02696F 50%, #F8ACAD 90%, #5F5348",
+		"background": "#D04A4A, #02696F 50%, #5F5348",
 		"heading-color": "#ffffff",
 		"heading-shadow": "0px 0px 10px #ffffff",
 		"line-stroke": "#ffffff",
@@ -56,7 +56,7 @@
 	},
 
 	"fifth-gen": {
-		"background": "#5F5348, #4167A1 30%, #245D25 60%, #e6e4ff",
+		"background": "#5F5348, #4167A1 30%, #245D25 60%, #8d8aab",
 		"heading-color": "#CCFFED",
 		"heading-shadow": "",
 		"line-stroke": "#CCFFED",

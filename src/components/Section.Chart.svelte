@@ -8,7 +8,7 @@
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 	let dimensions = new useWindowDimensions();
 
-	let { id, title, subtitle, nodeId, sectionId } = $props();
+	let { id, figcaption, title, subtitle, nodeId, sectionId } = $props();
 	const { registerNode } = getContext("nodeRegistry");
 
 	let el;
@@ -28,18 +28,19 @@
 	const C = components[id];
 </script>
 
-<div
+<figure
 	id={nodeId}
 	bind:this={el}
 	bind:clientWidth={width}
-	class="chart"
 	style={themes[sectionId]["text-style"] + `; --padding: ${padding}px;`}
 >
 	<C {title} {subtitle} {availableWidth} />
-</div>
+
+	<figcaption class="sr-only">{figcaption}</figcaption>
+</figure>
 
 <style>
-	.chart {
+	figure {
 		position: relative;
 		width: 100%;
 		background: var(--text-bg);
@@ -55,12 +56,12 @@
 		align-items: center;
 	}
 
-	.chart#second-gen-7 {
+	figure#second-gen-7 {
 		background: #fffafc;
 	}
 
 	@media (max-width: 600px) {
-		:global(.chart h3) {
+		:global(figure h3) {
 			font-size: var(--20px);
 		}
 	}

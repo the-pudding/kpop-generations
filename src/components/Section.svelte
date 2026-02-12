@@ -6,7 +6,7 @@
 
 	const current = getContext("current");
 
-	let { id, heading, years, nodes } = $props();
+	let { id, heading, years, coverAlt, nodes } = $props();
 
 	const style = Object.entries(themes[id] || {})
 		.filter(([key, value]) => !key.endsWith("-style"))
@@ -16,7 +16,7 @@
 
 <section {id} {style} use:inView onenter={() => (current.section = id)}>
 	<div class="cover">
-		<img src={`assets/img/${id}/cover.png`} />
+		<img src={`assets/img/${id}/cover.png`} alt={coverAlt} />
 		<div class="years">({years})</div>
 	</div>
 

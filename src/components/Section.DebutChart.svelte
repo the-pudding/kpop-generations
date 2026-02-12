@@ -49,8 +49,6 @@
 		}
 	};
 
-	$inspect({ tooltipData });
-
 	const mouseLeave = () => {
 		tooltipData = {};
 		tooltipX = undefined;

@@ -1,5 +1,6 @@
 <script>
 	import _ from "lodash";
+	import { prefersReducedMotion } from "svelte/motion";
 	import copy from "$data/copy.json";
 	import wordmark from "$svg/wordmark-bubble.svg";
 	import { getContext } from "svelte";
@@ -8,7 +9,10 @@
 
 	const onClick = (id) => {
 		const el = document.getElementById(id);
-		if (el) el.scrollIntoView({ behavior: "smooth" });
+		if (el)
+			el.scrollIntoView({
+				behavior: prefersReducedMotion.current ? "instant" : "smooth"
+			});
 	};
 </script>
 
@@ -24,12 +28,14 @@
 			{#each copy.sections as { id, years }}
 				{@const active = current.section === id}
 				{@const title = _.upperCase(id)}
-				<li class:active onclick={() => onClick(id)}>
-					<span class="circle"></span>
-					<div class="label">
-						<div>{title}</div>
-						<div class="years">{years}</div>
-					</div>
+				<li>
+					<button onclick={() => onClick(id)} class:active>
+						<span class="circle"></span>
+						<div class="label">
+							<div>{title}</div>
+							<div class="years">{years}</div>
+						</div>
+					</button>
 				</li>
 			{/each}
 		</ul>
@@ -97,20 +103,23 @@
 		gap: 1rem;
 	}
 
-	nav li {
+	button {
+		background: none;
+		padding: 0;
+		color: inherit;
 		display: flex;
 		align-items: center;
+		font-weight: bold;
 		gap: 6px;
 		opacity: 0.4;
-		transition: opacity 0.2s;
+		transition: opacity calc(var(--1s) * 0.3);
 	}
 
-	nav li:hover {
+	button:hover {
 		opacity: 0.8;
-		cursor: pointer;
 	}
 
-	nav li.active {
+	button.active {
 		opacity: 1;
 	}
 
@@ -134,7 +143,7 @@
 		display: inline-block;
 		background: white;
 		opacity: 0;
-		transition: opacity 0.2s;
+		transition: opacity calc(var(--1s) * 0.2);
 	}
 
 	.active .circle {

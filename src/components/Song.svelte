@@ -76,6 +76,7 @@
 				class:play={paused}
 				class:pause={!paused}
 				onclick={onClick}
+				aria-label={`${paused ? "play" : "pause"} button`}
 			>
 				{#if paused}
 					{@html playSvg}
@@ -138,6 +139,13 @@
 	:global(button.playpause:hover svg polygon) {
 		stroke: var(--color-gray-200);
 		fill: var(--color-gray-200);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:global(button.playpause svg circle) {
+			stroke-dashoffset: 0 !important;
+			stroke-dasharray: 0 !important;
+		}
 	}
 
 	@media (max-width: 600px) {

@@ -134,7 +134,11 @@
 			</div>
 
 			<section class="links">
-				<a class="img-wrapper" href="https://pudding.cool">
+				<a
+					class="img-wrapper"
+					href="https://pudding.cool"
+					aria-label="The Pudding"
+				>
 					<span class="wordmark">{@html wordmark}</span>
 				</a>
 				<div class="inner">
@@ -164,7 +168,7 @@
 <style>
 	footer {
 		padding: 100px 0;
-		background: #e6e4ff;
+		background: linear-gradient(#8d8aab, #e6e4ff 50%);
 	}
 
 	.c {
