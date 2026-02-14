@@ -1,6 +1,7 @@
 <script>
 	import copy from "$data/copy.json";
-	import titleSvg from "$svg/title.svg";
+	import titleSvg from "$svg/kpop.svg";
+	import growingUpSvg from "$svg/growing-up-with.svg";
 	import { onMount } from "svelte";
 
 	onMount(() => {
@@ -36,6 +37,7 @@
 <div id="title">
 	<h1 class="sr-only">Growing Up with K-Pop</h1>
 	<div class="svg-wrapper">
+		{@html growingUpSvg}
 		{@html titleSvg}
 	</div>
 	<div class="byline">
@@ -90,6 +92,14 @@
 
 	.author:nth-of-type(2) {
 		margin-bottom: 1rem;
+	}
+
+	:global(#title svg#growing-up-with) {
+		position: absolute;
+		width: 35%;
+		min-width: 200px;
+		left: 24%;
+		top: 0;
 	}
 
 	:global(#title svg g.bounce-in) {
@@ -160,11 +170,19 @@
 		.author:nth-of-type(1) {
 			font-size: var(--16px);
 		}
+
+		:global(#title svg#growing-up-with) {
+			transform: translate(0, -20%);
+		}
 	}
 
 	@media (max-width: 400px) {
 		.author:nth-of-type(1) {
 			font-size: var(--14px);
+		}
+
+		:global(#title svg#growing-up-with) {
+			transform: translate(-20%, -40%);
 		}
 	}
 </style>
