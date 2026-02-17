@@ -14,7 +14,8 @@
 				class:rectangle={shape === "rectangle"}
 				class:circle={shape === "circle"}
 				class:oval={shape === "oval"}
-				src={`assets/${sectionId}/${src}`}
+				style:transform={`rotate(${Math.random() * 8 - 4}deg)`}
+				src={`assets/img/${sectionId}/${src}`}
 				{alt}
 				onload={() => {
 					registerNode(`${nodeId}-${i}`, els[i]);
@@ -26,9 +27,12 @@
 
 <style>
 	.images-container {
-		display: flex;
 		margin: 3rem 0;
+		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
+		gap: 1rem;
+		align-items: center;
 	}
 
 	img {
@@ -45,5 +49,10 @@
 
 	.oval {
 		border-radius: 1000px;
+	}
+
+	.image-wrapper {
+		flex: 1 1 100px;
+		max-width: 250px;
 	}
 </style>

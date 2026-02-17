@@ -57,17 +57,52 @@
 	let anchors = $state({});
 	let nodeEls = $state(new Map());
 	let nodeIds = $derived(
-		_.orderBy(Array.from(nodeEls.keys()), (id) => +id.split("-").at(-1))
+		_.orderBy(Array.from(nodeEls.keys()), (id) => id.split("-")[2])
 	);
 
-	// Always bottom -> top
 	const connections = $derived(
-		nodeIds.slice(0, -1).map((from, i) => ({
-			from,
-			to: nodeIds[i + 1],
-			fromSide: "bottom",
-			toSide: "top"
-		}))
+		nodeIds.slice(0, -1).reduce((acc, from, i) => {
+			const next = nodeIds[i + 1];
+
+			const multi = from.split("-").length > 3;
+			const nextIsMulti = next.split("-").length > 3;
+
+			if (multi) {
+				const [, , node, subnode] = from.split("-");
+				const nodeNum = +node;
+
+				acc.push({
+					from,
+					to: `${id}-${nodeNum + 1}`,
+					fromSide: "bottom",
+					toSide: "top"
+				});
+			} else if (nextIsMulti) {
+				const parts = next.split("-");
+				const baseNode = parts[2];
+				const subnodes = nodeIds.filter((n) =>
+					n.startsWith(`${id}-${baseNode}-`)
+				);
+
+				subnodes.forEach((to) => {
+					acc.push({
+						from,
+						to,
+						fromSide: "bottom",
+						toSide: "top"
+					});
+				});
+			} else {
+				acc.push({
+					from,
+					to: next,
+					fromSide: "bottom",
+					toSide: "top"
+				});
+			}
+
+			return acc;
+		}, [])
 	);
 
 	const calculateAnchors = () => {
@@ -153,5 +188,6 @@
 
 	path {
 		stroke: var(--line-stroke);
+		opacity: 0.5;
 	}
 </style>
