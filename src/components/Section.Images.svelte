@@ -5,22 +5,38 @@
 	const { registerNode } = getContext("nodeRegistry");
 
 	let els = [];
+
+	onMount(() => {
+		requestAnimationFrame(() => {
+			els.forEach((el, i) => {
+				registerNode(`${nodeId}-${i}`, els[i]);
+			});
+		});
+	});
 </script>
 
 <div id={nodeId} class="images-container">
-	{#each images as { src, alt, shape, style }, i}
+	{#each images as { src, alt, shape, style, link }, i}
 		<div class="image-wrapper" {style} bind:this={els[i]}>
-			<img
-				class:rectangle={shape === "rectangle"}
-				class:circle={shape === "circle"}
-				class:oval={shape === "oval"}
-				style:transform={`rotate(${Math.random() * 8 - 4}deg)`}
-				src={`assets/img/${sectionId}/${src}`}
-				{alt}
-				onload={() => {
-					registerNode(`${nodeId}-${i}`, els[i]);
-				}}
-			/>
+			{#if src.includes("mp4")}
+				<video
+					autoplay={true}
+					loop={true}
+					muted={true}
+					playsinline={true}
+					src={`assets/img/${sectionId}/${src}`}
+				></video>
+				<a class="caption" href={link} target="_blank">Full video</a>
+			{:else}
+				<img
+					class:rectangle={shape === "rectangle"}
+					class:circle={shape === "circle"}
+					class:oval={shape === "oval"}
+					style:transform={`rotate(${Math.random() * 8 - 4}deg)`}
+					src={`assets/img/${sectionId}/${src}`}
+					{alt}
+				/>
+			{/if}
 		</div>
 	{/each}
 </div>
@@ -35,11 +51,18 @@
 		align-items: center;
 	}
 
-	img {
+	.image-wrapper {
+		flex: 1 1 100px;
+		max-width: 250px;
+	}
+
+	img,
+	video {
 		border: 2px solid var(--border);
 	}
 
-	.rectangle {
+	.rectangle,
+	video {
 		border-radius: var(--border-radius);
 	}
 
@@ -51,8 +74,11 @@
 		border-radius: 1000px;
 	}
 
-	.image-wrapper {
-		flex: 1 1 100px;
-		max-width: 250px;
+	.caption {
+		display: block;
+		font-size: var(--12px);
+		color: var(--text-color);
+		margin-top: 0.5rem;
+		text-align: center;
 	}
 </style>

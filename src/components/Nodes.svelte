@@ -184,6 +184,7 @@
 		width: 100%;
 		position: absolute;
 		top: 0;
+		pointer-events: none;
 	}
 
 	path {
