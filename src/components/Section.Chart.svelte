@@ -8,7 +8,7 @@
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 	let dimensions = new useWindowDimensions();
 
-	let { id, figcaption, title, subtitle, nodeId, sectionId } = $props();
+	let { id, figcaption, title, subtitle, source, nodeId, sectionId } = $props();
 	const { registerNode } = getContext("nodeRegistry");
 
 	let el;
@@ -36,6 +36,8 @@
 >
 	<C {title} {subtitle} {availableWidth} />
 
+	<div class="source">{@html source}</div>
+
 	<figcaption class="sr-only">{figcaption}</figcaption>
 </figure>
 
@@ -60,9 +62,18 @@
 		background: #fffafc;
 	}
 
+	.source {
+		align-self: start;
+		font-size: var(--14px);
+	}
+
 	@media (max-width: 600px) {
 		:global(figure h3) {
 			font-size: var(--20px);
+		}
+
+		.source {
+			font-size: var(--12px);
 		}
 	}
 </style>
