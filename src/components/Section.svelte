@@ -61,6 +61,7 @@
 		border-radius: var(--border-radius);
 		box-shadow: var(--box-shadow);
 		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
 		text-transform: uppercase;
 	}
 

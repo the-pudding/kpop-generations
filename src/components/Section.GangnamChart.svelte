@@ -149,6 +149,7 @@
 						class="highlight-label"
 						x={x(s.points[Math.floor(s.points.length / f)].date)}
 						y={y(s.points[Math.floor(s.points.length / f)].cumViews)}
+						transform={`rotate(279 ${x(s.points[Math.floor(s.points.length / f)].date)} ${y(s.points[Math.floor(s.points.length / f)].cumViews)})`}
 						>{s.video_title === "Gangam Style"
 							? "Gangnam Style"
 							: s.video_title}</text
@@ -203,9 +204,6 @@
 		font-size: var(--14px);
 		font-weight: bold;
 		text-anchor: middle;
-		transform-box: fill-box;
-		transform-origin: center;
-		transform: rotate(279deg);
 	}
 
 	rect.bg {

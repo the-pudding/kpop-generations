@@ -105,6 +105,7 @@
 		position: absolute;
 		top: 0;
 		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
 	}
 
 	.left .speaker {
