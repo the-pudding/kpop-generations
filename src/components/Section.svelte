@@ -1,10 +1,7 @@
 <script>
 	import themes from "$data/themes.json";
 	import Nodes from "$components/Nodes.svelte";
-	import { getContext } from "svelte";
-	import inView from "$actions/inView.js";
-
-	const current = getContext("current");
+	import mostInView from "$actions/mostInView.js";
 
 	let { id, heading, years, coverAlt, nodes } = $props();
 
@@ -14,7 +11,7 @@
 		.join(";");
 </script>
 
-<section {id} {style} use:inView onenter={() => (current.section = id)}>
+<section {id} {style} use:mostInView={id}>
 	<div class="cover">
 		<img src={`assets/img/${id}/cover.png`} alt={coverAlt} />
 		<div class="years">({years})</div>
@@ -77,8 +74,6 @@
 		font-family: "ABC Maxi Plus";
 		color: var(--heading-color);
 		text-shadow: var(--heading-shadow);
-		word-break: normal;
-		overflow-wrap: normal;
 	}
 
 	@media (max-width: 600px) {
@@ -87,7 +82,7 @@
 		}
 
 		h2 {
-			font-size: 64px;
+			font-size: 48px;
 		}
 
 		.years {

@@ -3,9 +3,9 @@
 	import { prefersReducedMotion } from "svelte/motion";
 	import copy from "$data/copy.json";
 	import wordmark from "$svg/wordmark-bubble.svg";
-	import { getContext } from "svelte";
-
-	const current = getContext("current");
+	import { current } from "$runes/misc.svelte.js";
+	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
+	let dimensions = new useWindowDimensions();
 
 	const onClick = (id) => {
 		const el = document.getElementById(id);
@@ -17,13 +17,16 @@
 </script>
 
 <header>
-	<div class="wordmark">
+	<div
+		class="wordmark"
+		class:visible={current.section === "title" || dimensions.width > 700}
+	>
 		<a href="https://pudding.cool" aria-label="The Pudding" target="_self"
 			>{@html wordmark}</a
 		>
 	</div>
 
-	<nav class:visible={current.section !== undefined}>
+	<nav class:visible={current.section !== "title"}>
 		<ul>
 			{#each copy.sections as { id, years }}
 				{@const active = current.section === id}
@@ -68,6 +71,11 @@
 		height: 80%;
 		width: fit-content;
 		transform: rotate(-4deg);
+		display: none;
+	}
+
+	.wordmark.visible {
+		display: block;
 	}
 
 	.wordmark a {
@@ -88,12 +96,11 @@
 		font-size: var(--12px);
 		font-weight: bold;
 		margin-left: auto;
-		opacity: 0;
-		transition: opacity calc(var(--1s) * 0.3);
+		display: none;
 	}
 
 	nav.visible {
-		opacity: 1;
+		display: block;
 	}
 
 	nav ul {
@@ -165,10 +172,6 @@
 	@media (max-width: 700px) {
 		header {
 			justify-content: center;
-		}
-
-		.wordmark {
-			display: none;
 		}
 
 		nav {

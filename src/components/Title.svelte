@@ -3,9 +3,10 @@
 	import titleSvg from "$svg/kpop.svg";
 	import growingUpSvg from "$svg/growing-up-with.svg";
 	import _ from "lodash";
+	import mostInView from "$actions/mostInView.js";
 </script>
 
-<div id="title">
+<section id="title" use:mostInView={"title"}>
 	<h1 class="sr-only">{copy.landing.title}</h1>
 	<div class="svg-wrapper">
 		{@html growingUpSvg}
@@ -24,7 +25,7 @@
 	<div class="context">
 		{@html copy.landing.context}
 	</div>
-</div>
+</section>
 
 <style>
 	#title {
@@ -83,6 +84,15 @@
 	@media (max-width: 600px) {
 		:global(#title svg#growing-up-with) {
 			transform: translate(0, -20%);
+		}
+
+		.img {
+			height: 120px;
+			width: 120px;
+		}
+
+		.context {
+			font-size: var(--16px);
 		}
 	}
 

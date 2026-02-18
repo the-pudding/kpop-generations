@@ -2,6 +2,7 @@
 	import { setContext } from "svelte";
 	import { browser } from "$app/environment";
 	import Meta from "$components/Meta.svelte";
+	import Header from "$components/Header.svelte";
 	import Index from "$components/Index.svelte";
 	import copy from "$data/copy.json";
 	import version from "$utils/version.js";
@@ -22,5 +23,6 @@
 	setContext("data", data);
 </script>
 
+<Header />
 <Meta {title} {description} {url} {preloadFont} {keywords} />
 <Index />

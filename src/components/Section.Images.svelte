@@ -1,8 +1,9 @@
 <script>
 	import { getContext, onMount, tick } from "svelte";
+	import { current } from "$runes/misc.svelte.js";
+
 	let { nodeId, sectionId, images } = $props();
 	const { registerNode } = getContext("nodeRegistry");
-	const current = getContext("current");
 
 	let els = [];
 
