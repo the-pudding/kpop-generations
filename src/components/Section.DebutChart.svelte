@@ -90,7 +90,7 @@
 							data-favorites={favorites}
 							onmouseenter={mouseEnter}
 							onmouseleave={mouseLeave}
-						/>
+						></div>
 					{/each}
 				</div>
 			</div>
@@ -107,7 +107,12 @@
 	<div class="group">{tooltipData.group}</div>
 	<div class="year">Debuted in {tooltipData.year}</div>
 	{#if tooltipData.favorites}
-		<div class="favorites">({tooltipData.favorites}'s favorite!)</div>
+		<div class="favorites">
+			({tooltipData.favorites.includes("Minji") &&
+			tooltipData.favorites.includes("Eunice")
+				? "Minji & Eunice"
+				: tooltipData.favorites}'s favorite!)
+		</div>
 	{/if}
 </div>
 
