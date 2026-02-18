@@ -1,17 +1,42 @@
 <script>
-	import { getContext, onMount } from "svelte";
-
+	import { getContext, onMount, tick } from "svelte";
 	let { nodeId, sectionId, images } = $props();
 	const { registerNode } = getContext("nodeRegistry");
+	const current = getContext("current");
 
 	let els = [];
 
-	onMount(() => {
-		requestAnimationFrame(() => {
+	let hasLoaded = $state(false);
+
+	$effect(async () => {
+		const order = [
+			"first-gen",
+			"second-gen",
+			"third-gen",
+			"fourth-gen",
+			"fifth-gen"
+		];
+
+		const currentIndex = order.indexOf(current.section);
+		const myIndex = order.indexOf(sectionId);
+
+		if (currentIndex >= myIndex - 1 && !hasLoaded) {
+			hasLoaded = true;
+		}
+	});
+
+	$effect(() => {
+		if (!hasLoaded) return;
+
+		const observer = new ResizeObserver(() => {
 			els.forEach((el, i) => {
-				registerNode(`${nodeId}-${i}`, els[i]);
+				registerNode(`${nodeId}-${i}`, el);
 			});
 		});
+
+		els.forEach((el) => observer.observe(el));
+
+		return () => observer.disconnect();
 	});
 </script>
 
@@ -24,7 +49,7 @@
 					loop={true}
 					muted={true}
 					playsinline={true}
-					src={`assets/img/${sectionId}/${src}`}
+					src={hasLoaded ? `assets/img/${sectionId}/${src}` : undefined}
 				></video>
 				<a class="caption" href={link} target="_blank">Full video</a>
 			{:else}
@@ -33,7 +58,7 @@
 					class:circle={shape === "circle"}
 					class:oval={shape === "oval"}
 					style:transform={`rotate(${Math.random() * 8 - 4}deg)`}
-					src={`assets/img/${sectionId}/${src}`}
+					src={hasLoaded ? `assets/img/${sectionId}/${src}` : undefined}
 					{alt}
 				/>
 			{/if}
@@ -52,7 +77,7 @@
 	}
 
 	.image-wrapper {
-		flex: 1 1 100px;
+		flex: 1 1 120px;
 		max-width: 250px;
 	}
 
@@ -80,5 +105,11 @@
 		color: var(--text-color);
 		margin-top: 0.5rem;
 		text-align: center;
+	}
+
+	@media (max-width: 600px) {
+		.images-container {
+			gap: 0.25rem;
+		}
 	}
 </style>

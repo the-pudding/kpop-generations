@@ -85,6 +85,7 @@
 	@media (max-width: 600px) {
 		table {
 			font-size: var(--14px);
+			line-height: 1.2;
 		}
 
 		a {

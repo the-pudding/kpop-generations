@@ -77,9 +77,15 @@
 		font-family: "ABC Maxi Plus";
 		color: var(--heading-color);
 		text-shadow: var(--heading-shadow);
+		word-break: normal;
+		overflow-wrap: normal;
 	}
 
 	@media (max-width: 600px) {
+		section {
+			padding: 3rem 2rem;
+		}
+
 		h2 {
 			font-size: 64px;
 		}
