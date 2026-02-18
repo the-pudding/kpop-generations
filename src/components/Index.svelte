@@ -2,6 +2,7 @@
 	import copy from "$data/copy.json";
 	import Title from "$components/Title.svelte";
 	import Section from "$components/Section.svelte";
+	import Methods from "$components/Methods.svelte";
 	import Footer from "$components/Footer.svelte";
 </script>
 
@@ -11,6 +12,8 @@
 	{#each copy.sections as section}
 		<Section {...section} />
 	{/each}
+
+	<Methods />
 
 	<Footer recirc={true} />
 </article>

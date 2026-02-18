@@ -168,7 +168,7 @@
 <style>
 	footer {
 		padding: 100px 0;
-		background: linear-gradient(#8d8aab, #e6e4ff 50%);
+		background: #e6e4ff;
 	}
 
 	.c {
