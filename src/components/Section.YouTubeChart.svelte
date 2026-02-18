@@ -4,36 +4,33 @@
 	import { max } from "d3-array";
 
 	let { title } = $props();
-
-	const xScale = scaleLinear()
-		.domain([0, max(data, (d) => +d.views.replace("M", ""))])
-		.range([0, 100]);
 </script>
 
 <h3>{@html title}</h3>
 
-<table>
-	<tbody>
-		{#each data as { rank, artist, song, link, views }}
-			<tr>
-				<td>{rank}</td>
-				<td>{artist} - {song}</td>
-				<td class="views">
-					{views} views
-					<div
-						class="bar"
-						style:width={`${xScale(+views.replace("M", ""))}%`}
-					></div>
-				</td>
-				<td class="video-button"
-					><a href={link} target="_blank"
-						>Watch <span class="video">Video</span></a
-					></td
+<div class="table">
+	{#each data as { rank, artist, song, link, views, thumbnail, channel }}
+		<a href={link} target="_blank">
+			<div class="video">
+				<div class="rank">{rank}</div>
+				<div
+					class="thumbnail"
+					style:transform={rank === "10" ? "translate(-9px, 0)" : "none"}
 				>
-			</tr>
-		{/each}
-	</tbody>
-</table>
+					<img src={`assets/img/thumbnails/${thumbnail}.jpg`} />
+				</div>
+				<div
+					class="info"
+					style:transform={rank === "10" ? "translate(-9px, 0)" : "none"}
+				>
+					<div class="song-name">{artist} - {song}</div>
+					<span class="channel">{channel}</span>
+					<span class="views">{views} views</span>
+				</div>
+			</div>
+		</a>
+	{/each}
+</div>
 
 <style>
 	h3 {
@@ -42,62 +39,63 @@
 		font-weight: bold;
 	}
 
-	table {
-		table-layout: auto;
+	.table {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 1rem;
 	}
 
-	tr {
-	}
-
-	td {
-		position: relative;
-		padding: 0.75rem;
-	}
-
-	.bar {
-		/* position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		background: rgba(255, 255, 255, 0.1);
+	.video {
 		height: 100%;
-		pointer-events: none;
-		border-top-right-radius: 4px;
-		border-bottom-right-radius: 4px; */
+		display: flex;
+		gap: 1rem;
+		padding: 0.5rem;
+		border-bottom: 1px solid var(--text-color);
 	}
 
-	.views {
-		white-space: nowrap;
-	}
-
-	.video-button {
-		white-space: nowrap;
+	.video:hover {
+		background: rgba(163, 155, 255, 0.5);
 	}
 
 	a {
 		text-decoration: none;
-		border-radius: calc(var(--border-radius) / 2);
-		box-shadow: var(--box-shadow);
-		padding: 0.5rem 1rem;
-		text-transform: uppercase;
+	}
+
+	.thumbnail {
+		flex: 0 0 100px;
+	}
+
+	.thumbnail img {
+		width: 100%;
+		border: 1px solid var(--text-color);
+		border-radius: 4px;
+	}
+
+	.song-name,
+	.rank {
+		font-weight: bold;
+		font-size: var(--14px);
+	}
+
+	.channel,
+	.views {
+		font-size: var(--12px);
+	}
+
+	.views {
+		margin-left: -4px;
+	}
+
+	.views::before {
+		content: "•";
+		color: var(--text-color);
+		margin-right: 4px;
 	}
 
 	@media (max-width: 600px) {
-		table {
-			font-size: var(--14px);
-			line-height: 1.2;
-		}
-
-		a {
-			padding: 0.25rem 0.5rem;
-		}
-
-		a .video {
-			display: none;
-		}
-
-		.views {
-			white-space: normal;
+		.song-name,
+		.rank {
+			font-size: var(--12px);
 		}
 	}
 </style>

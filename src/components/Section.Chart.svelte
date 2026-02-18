@@ -63,17 +63,14 @@
 	}
 
 	.source {
+		margin-top: 1rem;
 		align-self: start;
-		font-size: var(--14px);
+		font-size: var(--12px);
 	}
 
 	@media (max-width: 600px) {
 		:global(figure h3) {
 			font-size: var(--20px);
-		}
-
-		.source {
-			font-size: var(--12px);
 		}
 	}
 </style>
