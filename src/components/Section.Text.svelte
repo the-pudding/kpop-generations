@@ -59,7 +59,8 @@
 		align-items: flex-start;
 		margin: 3rem 0;
 		justify-content: space-between;
-		gap: 1rem;
+		gap: 1.5rem;
+		z-index: 2;
 	}
 
 	.text-block {

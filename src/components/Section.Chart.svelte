@@ -56,6 +56,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		z-index: 2;
 	}
 
 	figure#second-gen-7 {

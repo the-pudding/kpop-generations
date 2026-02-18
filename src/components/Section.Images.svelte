@@ -75,6 +75,7 @@
 		justify-content: center;
 		gap: 1rem;
 		align-items: center;
+		z-index: 2;
 	}
 
 	.image-wrapper {

@@ -43,6 +43,7 @@
 		margin: 3rem auto;
 		position: relative;
 		display: inline-block;
+		z-index: 2;
 	}
 
 	.image-wrapper::after {

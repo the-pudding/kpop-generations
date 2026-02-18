@@ -1,7 +1,5 @@
 <script>
 	import data from "$data/youtube-records.csv";
-	import { scaleLinear } from "d3-scale";
-	import { max } from "d3-array";
 
 	let { title } = $props();
 </script>
@@ -17,7 +15,10 @@
 					class="thumbnail"
 					style:transform={rank === "10" ? "translate(-9px, 0)" : "none"}
 				>
-					<img src={`assets/img/thumbnails/${thumbnail}.jpg`} />
+					<img
+						src={`assets/img/thumbnails/${thumbnail}.jpg`}
+						alt={`YouTube thumbnail for ${song} by ${artist}`}
+					/>
 				</div>
 				<div
 					class="info"
@@ -41,8 +42,9 @@
 
 	.table {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
 		gap: 1rem;
+		width: 100%;
 	}
 
 	.video {
@@ -96,6 +98,10 @@
 		.song-name,
 		.rank {
 			font-size: var(--12px);
+		}
+
+		.thumbnail {
+			flex: 0 0 50px;
 		}
 	}
 </style>
