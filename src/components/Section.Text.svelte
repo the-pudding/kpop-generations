@@ -128,9 +128,12 @@
 	}
 
 	@media (max-width: 600px) {
-		.speaker,
 		.text-block {
 			font-size: var(--14px);
+		}
+
+		.speaker {
+			font-size: var(--12px);
 		}
 
 		.text-wrapper {
