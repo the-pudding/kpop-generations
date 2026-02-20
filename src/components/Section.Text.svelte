@@ -38,7 +38,11 @@
 {/snippet}
 
 {#if song}
-	<div class="text-wrapper">
+	<div
+		class="text-wrapper"
+		class:reverse={(speaker === "eunice" && song.direction === "before") ||
+			(speaker === "minji" && song.direction === "after")}
+	>
 		{#if song && speaker === "minji"}
 			<Song {...song} />
 		{/if}
@@ -138,6 +142,10 @@
 
 		.text-wrapper {
 			flex-direction: column;
+		}
+
+		.text-wrapper.reverse {
+			flex-direction: column-reverse;
 		}
 
 		.text-block {
