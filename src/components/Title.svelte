@@ -7,24 +7,29 @@
 </script>
 
 <section id="title" use:mostInView={"title"}>
+	<div class="landing">
+		<div class="intros">
+			{#each ["minji", "eunice"] as name}
+				<div class="intro">
+					<div class="img"></div>
+					<div class="caption">Hi, I'm {_.startCase(name)}!</div>
+				</div>
+			{/each}
+		</div>
+
+		<div class="context">
+			{@html copy.landing.context}
+		</div>
+	</div>
+
 	<h1 class="sr-only">{copy.landing.title}</h1>
+
 	<div class="svg-wrapper">
 		{@html growingUpSvg}
 		{@html titleSvg}
 	</div>
 
-	<div class="intros">
-		{#each ["eunice", "minji"] as name}
-			<div class="intro">
-				<div class="img"></div>
-				<div class="caption">Hi, I'm {_.startCase(name)}!</div>
-			</div>
-		{/each}
-	</div>
-
-	<div class="context">
-		{@html copy.landing.context}
-	</div>
+	<div class="byline">{@html copy.landing.byline}</div>
 </section>
 
 <style>
@@ -39,10 +44,20 @@
 		);
 	}
 
+	.landing {
+		height: calc(100svh - 4rem);
+		gap: 3rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
 	.svg-wrapper {
 		position: relative;
 		max-width: 1000px;
-		margin: 6rem auto;
+		margin: 0 auto;
+		margin-bottom: 3rem;
 	}
 
 	.intros {
@@ -68,9 +83,15 @@
 
 	.context {
 		max-width: 600px;
-		margin: 4rem auto;
+		margin: 0 auto;
 		text-align: center;
 		font-size: var(--18px);
+	}
+
+	.byline {
+		text-align: center;
+		font-size: var(--18px);
+		margin-bottom: 3rem;
 	}
 
 	:global(#title svg#growing-up-with) {
@@ -99,6 +120,11 @@
 	@media (max-width: 400px) {
 		:global(#title svg#growing-up-with) {
 			transform: translate(-20%, -40%);
+		}
+
+		.byline {
+			font-size: var(--14px);
+			margin-bottom: 0;
 		}
 	}
 </style>
