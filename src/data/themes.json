@@ -14,16 +14,16 @@
 	},
 
 	"second-gen": {
-		"background": "#F1FD0F, #D21FB2 33%, #4D9BEF 63%, #DADAFF 86%, #000000",
+		"background": "#F1FD0F, #D21FB2 33%, #4162BE 63%, #DADAFF 86%, #000000",
 		"heading-color": "#FFFAFC",
-		"heading-shadow": "-1px -1px 0 #D255F3, 1px -1px 0 #D255F3, -1px 1px 0 #D255F3, 1px 1px 0 #D255F3, 0px 4px 24px #D255F3",
+		"heading-shadow": "-1px -1px 0 #9F40B8, 1px -1px 0 #9F40B8, -1px 1px 0 #9F40B8, 1px 1px 0 #9F40B8, 0px 4px 24px #9F40B8",
 		"line-stroke": "#FFD6F0",
-		"text-color": "#D255F3",
-		"text-bg": "linear-gradient(to bottom right, #FFFAFC, #FFCCED)",
-		"border": "#D255F3",
+		"text-color": "#9F40B8",
+		"text-bg": "linear-gradient(to bottom right, #FFFAFC, #FFE8F1)",
+		"border": "#9F40B8",
 		"box-shadow": "0px 4px 24px #D255F3, inset 0px -6px 14px #D255F3",
 
-		"eunice-text-color": "#4D9BEF",
+		"eunice-text-color": "#4162BE",
 		"eunice-text-bg": "linear-gradient(to bottom right, #FFFAFC, #DDEEFF)",
 		"eunice-border": "#5495EC",
 		"eunice-box-shadow": "0px 4px 24px #5495EC, inset 0px -6px 14px #5495EC"
@@ -52,17 +52,25 @@
 		"text-color": "#ffffff",
 		"text-bg": "",
 		"border": "none",
-		"box-shadow": "inset 50px -56px 64px rgba(163, 155, 255, 0.55), inset 20px -6px 34px #CFCFCF, inset 0px 4px 4px #ffffff, inset -60px 64px 104px rgba(98, 54, 255, .5)"
+		"box-shadow": "inset 50px -56px 64px rgba(163, 155, 255, 0.55), inset 20px -6px 34px #CFCFCF, inset 0px 4px 4px #ffffff, inset -60px 64px 104px rgba(98, 54, 255, .5)",
+
+		"eunice-box-shadow": "inset 50px -56px 64px rgba(170, 20, 89, 0.55), inset 20px -6px 34px #CFCFCF, inset 0px 4px 4px #ffffff, inset -60px 64px 104px rgba(170, 20, 89, 0.5)"
 	},
 
 	"fifth-gen": {
-		"background": "#5F5348, #4167A1 30%, #245D25 60%, #8d8aab",
+		"background": "#5F5348, #4167A1 10%, #245D25 60%, #68648a",
 		"heading-color": "#CCFFED",
 		"heading-shadow": "",
 		"line-stroke": "#CCFFED",
 		"text-color": "#CCFFED",
 		"text-bg": "",
 		"border": "#000000",
-		"box-shadow": "4px 4px 0px #CCFFED, inset 0px 3px 40px #CCFFED "
+		"box-shadow": "4px 4px 0px #CCFFED, inset 0px 3px 20px #CCFFED ",
+
+		"minji-heading-color": "#F1CCFF",
+		"minji-heading-shadow": "",
+		"minji-line-stroke": "#F1CCFF",
+		"minji-text-color": "#F1CCFF",
+		"minji-box-shadow": "4px 4px 0px #F1CCFF, inset 0px 3px 20px #F1CCFF "
 	}
 }

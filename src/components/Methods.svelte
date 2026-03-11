@@ -17,7 +17,7 @@
 <style>
 	section {
 		padding: 5rem 2rem;
-		background: linear-gradient(#8d8aab, #e6e4ff 80%);
+		background: linear-gradient(#68648a, #e6e4ff 80%);
 	}
 
 	h3 {
