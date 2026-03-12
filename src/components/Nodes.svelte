@@ -190,6 +190,6 @@
 
 	path {
 		stroke: var(--line-stroke);
-		opacity: 0.3;
+		opacity: 0.5;
 	}
 </style>

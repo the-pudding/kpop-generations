@@ -29,7 +29,7 @@
 		{@html titleSvg}
 	</div>
 
-	<div class="byline">{@html copy.landing.byline}</div>
+	<!-- <div class="byline">{@html copy.landing.byline}</div> -->
 </section>
 
 <style>

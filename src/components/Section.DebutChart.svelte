@@ -151,6 +151,8 @@
 		width: 10px;
 		border-radius: 50%;
 		background: var(--text-color);
+		transition: all calc(var(--1s) * 0.25) ease-in;
+		cursor: pointer;
 	}
 
 	.dot.minji-fave,
@@ -160,7 +162,8 @@
 	}
 
 	.dot.active {
-		background: #fffafc;
+		border: 2px solid #fffafc;
+		transform: scale(2.5);
 	}
 
 	.tooltip {
@@ -202,6 +205,7 @@
 
 	.favorites {
 		font-size: var(--12px);
+		color: var(--minji-text-color);
 	}
 
 	@media (max-width: 600px) {

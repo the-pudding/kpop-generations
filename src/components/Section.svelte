@@ -62,6 +62,11 @@
 		text-transform: uppercase;
 	}
 
+	#third-gen .years {
+		background: #FFA9FF;
+		color: #000000;
+	}
+
 	h2 {
 		font-size: 92px;
 		width: 100%;
