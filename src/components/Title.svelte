@@ -11,20 +11,24 @@
 
 
 	onMount(() => {
-		let targetLetters = selectAll("#title .svg-wrapper svg .target-letter");
-		let targetSparkle = selectAll("#title .svg-wrapper svg #stars path");
+		let targetLetters = selectAll("#title .img-wrapper .letter");
+		let targetSparkle = selectAll("#title .img-wrapper .sparkle");
 
 		targetLetters
 			.style("transform-origin", "center") 
-			.attr("transform", "scale(0)")       
+			// Initial state: invisible and scaled down
+			.style("opacity", 0)
+			.style("transform", "scale(0)")       
 			.transition()
-			.duration(1200)
-			.delay((d, i) => i * 60)             
+			.duration(1000)
+			.delay((d, i) => i * 100)             
 			.ease(easeBounceOut)
-			.attr("transform", "scale(1)")
+			.style("opacity", 1)
+			.style("transform", "scale(1)")
 			.on("end", function(d, i) {
+				// If you still have stars/sparkles to animate later:
 				if (i === targetLetters.size() - 1) {
-					animateStars(targetSparkle);
+					animateStars(targetSparkle); 
 				}
 			});
 
@@ -55,10 +59,12 @@
 	function startTwinkle(starSelection) {
         starSelection
             .transition()
-            .duration(1000 + Math.random() * 1000)
+			.delay((d, i) => i * 500)
+            .duration(500 + Math.random() * 1000)
             .style("opacity", 0.4)
             .transition()
-            .duration(1000 + Math.random() * 1000)
+			.delay((d, i) => i * 500)
+            .duration(500 + Math.random() * 1000)
             .style("opacity", 1)
             .on("end", () => startTwinkle(starSelection));
     }
@@ -67,8 +73,20 @@
 <section id="title" use:mostInView={"title"}>
 	<h1 class="sr-only">{copy.landing.title}</h1>
 
-	<div class="svg-wrapper">
+	<!-- <div class="svg-wrapper">
 		{@html titleSvg}
+	</div> -->
+
+	<div class="img-wrapper">
+		{#each [0,1,2,3,4] as group, i}
+			<div id="group-{i}" class="letter-group">
+				<img class="letter" alt="K-POP" src="/assets/img/title/letter{i}.png" />
+				<img class="sparkle" alt="star" src="/assets/img/title/Star{i}.png" />
+				{#if i == 4}
+					<img class="sparkle" alt="star" src="/assets/img/title/Star5.png" />
+				{/if}
+			</div>
+		{/each}
 	</div>
 
 	<div class="landing">
@@ -114,6 +132,79 @@
 		position: relative;
 		max-width: 1000px;
 		margin: 5rem auto;
+	}
+
+	.img-wrapper {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		max-width: 1000px;
+		margin: 4rem auto;
+		height: 30vw; 
+    	max-height: 400px;
+	}
+
+	.letter-group {
+		flex: 0 0 auto;
+		height: 100%; 
+		width: auto;       
+		object-fit: contain;
+		margin: 0 -3vw;
+		z-index: 1000;
+		box-sizing: border-box;
+		position: relative;
+	}
+
+	#group-1 {
+		margin: 0 -3vw 0 -5vw;
+		z-index: 999;
+	}
+
+	#group-3 .letter {
+		z-index: 999;
+	}
+
+	.letter {
+		height: 100%;
+	}
+
+	.sparkle {
+		position: absolute;
+		width: 3vw;
+		filter: blur(1px);
+	}
+
+	#group-0 .sparkle {
+		top: 11.5%;
+		left: 4%;
+	}
+
+	#group-1 .sparkle {
+		top: 33%;
+		left: 40%;
+	}
+
+	#group-2 .sparkle {
+		top: 60%;
+		left: 62%;
+	}
+
+	#group-3 .sparkle {
+		top: 8%;
+		left: 45%;
+	}
+
+	#group-4 .sparkle {
+		top: 80%;
+		left: 5%;
+	}
+
+	#group-4 .sparkle:last-of-type {
+		top: 28%;
+		left: 78%;
 	}
 
 	.intros {
