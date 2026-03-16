@@ -153,6 +153,8 @@
 		-webkit-backface-visibility: hidden;
     	backface-visibility: hidden;
 		transform-style: preserve-3d;
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
 	}
 
 	.left .speaker {
@@ -180,6 +182,15 @@
 
 	:global(#third-gen .content .right .speaker) {
 		background: var(--minji-text-color) !important;
+		color: #000000;
+	}
+
+	:global(#fourth-gen .content .right .speaker, #fourth-gen .content .left .speaker) {
+		color: #000000;
+	}
+
+	:global(#fifth-gen .content .right .speaker, #fifth-gen .content .left .speaker) {
+		background: rgba(255,255,255,0.8) !important;
 		color: #000000;
 	}
 

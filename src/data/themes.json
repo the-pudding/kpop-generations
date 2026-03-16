@@ -51,7 +51,7 @@
 		"line-stroke": "#ffffff",
 		"text-color": "#ffffff",
 		"text-bg": "",
-		"border": "none",
+		"border": "rgba(255,255,255,0.75)",
 		"box-shadow": "inset 50px -56px 64px rgba(163, 155, 255, 0.55), inset 20px -6px 34px #CFCFCF, inset 0px 4px 4px #ffffff, inset -60px 64px 104px rgba(98, 54, 255, .5)",
 
 		"eunice-box-shadow": "inset 50px -56px 64px rgba(170, 20, 89, 0.55), inset 20px -6px 34px #CFCFCF, inset 0px 4px 4px #ffffff, inset -60px 64px 104px rgba(170, 20, 89, 0.5)"

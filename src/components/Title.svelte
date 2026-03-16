@@ -76,19 +76,23 @@
 	<!-- <div class="svg-wrapper">
 		{@html titleSvg}
 	</div> -->
-
-	<div class="img-wrapper">
-		{#each [0,1,2,3,4] as group, i}
-			<div id="group-{i}" class="letter-group">
-				<img class="letter" alt="K-POP" src="/assets/img/title/letter{i}.png" />
-				<img class="sparkle" alt="star" src="/assets/img/title/Star{i}.png" />
-				{#if i == 4}
-					<img class="sparkle" alt="star" src="/assets/img/title/Star5.png" />
-				{/if}
-			</div>
-		{/each}
+	<div class="inset">
+		<div class="bubble-wrapper">
+			<img class="bubble" alt="text bubbel: with" src="/assets/img/title/with.png" />
+			<img class="bubble" alt="text bubble: growing up" src="/assets/img/title/growing-up.png" />
+		</div>
+		<div class="img-wrapper">
+			{#each [0,1,2,3,4] as group, i}
+				<div id="group-{i}" class="letter-group">
+					<img class="letter" alt="K-POP" src="/assets/img/title/letter{i}.png" />
+					<img class="sparkle" alt="star" src="/assets/img/title/Star{i}.png" />
+					{#if i == 4}
+						<img class="sparkle" alt="star" src="/assets/img/title/Star5.png" />
+					{/if}
+				</div>
+			{/each}
+		</div>
 	</div>
-
 	<div class="landing">
 		<div class="intros">
 			{#each ["minji", "eunice"] as name}
@@ -103,8 +107,6 @@
 			{@html copy.landing.context}
 		</div>
 	</div>
-
-	<!-- <div class="byline">{@html copy.landing.byline}</div> -->
 </section>
 
 <style>
@@ -117,6 +119,20 @@
 			#c0baff 81%,
 			#6cb0f9
 		);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.inset {
+		height: 32vw; 
+    	max-height: 400px;
+		width: 100%;
+		max-width: 1000px;
+		margin: 5rem auto;
+		position: relative;
 	}
 
 	.landing {
@@ -134,17 +150,37 @@
 		margin: 5rem auto;
 	}
 
-	.img-wrapper {
-		position: relative;
+	.img-wrapper, .bubble-wrapper {
+		position: absolute;
+		top: 0;
+		left: 0;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		max-width: 1000px;
-		margin: 4rem auto;
-		height: 30vw; 
-    	max-height: 400px;
+		height: 100%;
+	}
+
+	.bubble-wrapper {
+		z-index: 1002;
+	}
+
+	.bubble {
+		position: absolute;
+		transform: translate(-50%, -50%);
+	}
+
+	.bubble:first-of-type {
+		width: 8vw;
+		top: 2.5%;
+		left: 52%;
+	}
+
+	.bubble:last-of-type {
+		width: 18vw;
+		top: 2%;
+		left: 40%;
 	}
 
 	.letter-group {
