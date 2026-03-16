@@ -6,17 +6,38 @@
 	import _ from "lodash";
 	import { select, selectAll } from "d3-selection";
 	import { easeBounceOut, easeElasticOut, easeCubicOut } from 'd3-ease';
+	import { interpolateString } from 'd3-interpolate';
 	import 'd3-transition';
 	import mostInView from "$actions/mostInView.js";
 
 
 	onMount(() => {
 		let targetLetters = selectAll("#title .img-wrapper .letter");
+		let targetBubbles = selectAll("#title .bubble-wrapper .bubble");
 		let targetSparkle = selectAll("#title .img-wrapper .sparkle");
 
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		if (prefersReducedMotion) {
+			targetLetters.style("opacity", 1).style("transform", "scale(1)");
+			targetBubbles.style("opacity", 1).style("transform", "translate(-50%, -50%) scale(1)");
+			targetSparkle.style("opacity", 1).style("transform", "scale(1) rotate(0deg)");
+			return; 
+		}
+
+		// Initial state for bubbles
+		targetBubbles
+			.style("opacity", 0)
+			.style("transform", "translate(-50%, -50%) scale(0)");
+
+		// Initial state for sparkles
+		targetSparkle
+			.style("opacity", 0)
+			.attr("transform", "scale(0) rotate(-180)");
+
+		// Animate Letters
 		targetLetters
 			.style("transform-origin", "center") 
-			// Initial state: invisible and scaled down
 			.style("opacity", 0)
 			.style("transform", "scale(0)")       
 			.transition()
@@ -26,18 +47,21 @@
 			.style("opacity", 1)
 			.style("transform", "scale(1)")
 			.on("end", function(d, i) {
-				// If you still have stars/sparkles to animate later:
 				if (i === targetLetters.size() - 1) {
 					animateStars(targetSparkle); 
 				}
 			});
 
-		targetSparkle
-			.style("transform-origin", "center")
-			.style("transform-box", "fill-box") // This is the "magic" line
-			.style("opacity", 0)
-			.attr("transform", "scale(0) rotate(-180)");
-	})
+		targetBubbles
+			.transition()
+			.duration(800)
+			.delay((d, i) => 500 + ((targetBubbles.size() - 1 - i) * 200))
+			.ease(easeBounceOut)
+			.style("opacity", 1)
+			.styleTween("transform", () => 
+				interpolateString("translate(-50%, -50%) scale(0)", "translate(-50%, -50%) scale(1)")
+			);
+	});
 
 	function animateStars(stars) {
 		stars
@@ -163,24 +187,33 @@
 	}
 
 	.bubble-wrapper {
+		position: absolute;
+    	top: 0;
+		left: 50%;
+    	transform: translateX(-50%);
+		width: 100%;
+		max-width: 1000px; 
+		height: 100%;
 		z-index: 1002;
+		pointer-events: none;
 	}
 
 	.bubble {
 		position: absolute;
 		transform: translate(-50%, -50%);
+		height: auto;
 	}
 
 	.bubble:first-of-type {
-		width: 8vw;
-		top: 2.5%;
-		left: 52%;
+		width: 10%;
+		top: 5%;      
+		left: 52%;   
 	}
 
 	.bubble:last-of-type {
-		width: 18vw;
-		top: 2%;
-		left: 40%;
+		width: 22%;
+		top: 0%;  
+		left: 38%;    
 	}
 
 	.letter-group {
@@ -283,6 +316,18 @@
 		min-width: 200px;
 		left: 24%;
 		top: 0;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*, ::before, ::after {
+			animation-delay: -1ms !important;
+			animation-duration: 1ms !important;
+			animation-iteration-count: 1 !important;
+			background-attachment: initial !important;
+			scroll-behavior: auto !important;
+			transition-duration: 0s !important;
+			transition-delay: 0s !important;
+		}
 	}
 
 	@media (max-width: 600px) {

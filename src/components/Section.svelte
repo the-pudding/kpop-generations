@@ -226,6 +226,25 @@
 		text-shadow: var(--heading-shadow);
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		.num-wrapper .num, 
+		.num-wrapper .sparkle {
+			opacity: 1 !important;
+			transform: scale(1) rotate(0deg) !important;
+			transition: none !important;
+			animation: none !important;
+		}
+
+		.num-wrapper {
+			transform: rotate(-6deg) !important;
+			transition: none !important;
+		}
+
+		.num-wrapper.animate .sparkle {
+			animation: none !important;
+		}
+	}
+
 	@media (max-width: 600px) {
 		section {
 			padding: 3rem 2rem;
