@@ -34,7 +34,7 @@
 				<li>
 					<button onclick={() => onClick(id)} class:active>
 						<div class="num">
-							<img src="/assets/img/{id}/num.png" alt="number for {id}"/>
+							<img src="assets/img/{id}/num.png" alt="number for {id}"/>
 						</div>
 						<div class="label">
 							<div>{numEnd} gen</div>

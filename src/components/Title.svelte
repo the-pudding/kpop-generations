@@ -102,16 +102,16 @@
 	</div> -->
 	<div class="inset">
 		<div class="bubble-wrapper">
-			<img class="bubble" alt="text bubbel: with" src="/assets/img/title/with.png" />
-			<img class="bubble" alt="text bubble: growing up" src="/assets/img/title/growing-up.png" />
+			<img class="bubble" alt="text bubbel: with" src="assets/img/title/with.png" />
+			<img class="bubble" alt="text bubble: growing up" src="assets/img/title/growing-up.png" />
 		</div>
 		<div class="img-wrapper">
 			{#each [0,1,2,3,4] as group, i}
 				<div id="group-{i}" class="letter-group">
-					<img class="letter" alt="K-POP" src="/assets/img/title/letter{i}.png" />
-					<img class="sparkle" alt="star" src="/assets/img/title/Star{i}.png" />
+					<img class="letter" alt="K-POP" src="assets/img/title/letter{i}.png" />
+					<img class="sparkle" alt="star" src="assets/img/title/Star{i}.png" />
 					{#if i == 4}
-						<img class="sparkle" alt="star" src="/assets/img/title/Star5.png" />
+						<img class="sparkle" alt="star" src="assets/img/title/Star5.png" />
 					{/if}
 				</div>
 			{/each}
