@@ -28,15 +28,17 @@
 
 	<nav class:visible={current.section !== "title"}>
 		<ul>
-			{#each copy.sections as { id, years }}
+			{#each copy.sections as { id, numEnd, years }}
 				{@const active = current.section === id}
 				{@const title = _.upperCase(id)}
 				<li>
 					<button onclick={() => onClick(id)} class:active>
-						<span class="circle"></span>
+						<div class="num">
+							<img src="/assets/img/{id}/num.png" alt="number for {id}"/>
+						</div>
 						<div class="label">
-							<div>{title}</div>
-							<div class="years">{years}</div>
+							<div>{numEnd} gen</div>
+							<!-- <div class="years">{years}</div> -->
 						</div>
 					</button>
 				</li>
@@ -54,8 +56,8 @@
 		top: 0;
 		z-index: var(--z-top);
 		width: 100%;
-		height: 4rem;
-		padding: 1rem;
+		height: 7rem;
+		padding: 1rem 1rem 4rem 1rem;
 
 		background-image: linear-gradient(
 			to bottom,
@@ -66,8 +68,6 @@
 	}
 
 	.wordmark {
-		grid-column: 2;
-		justify-self: center;
 		height: 80%;
 		width: fit-content;
 		transform: rotate(-4deg);
@@ -117,7 +117,7 @@
 		display: flex;
 		align-items: center;
 		font-weight: bold;
-		gap: 6px;
+		gap: 0;
 		opacity: 0.4;
 		transition: opacity calc(var(--1s) * 0.3);
 	}
@@ -130,10 +130,19 @@
 		opacity: 1;
 	}
 
+	.num {
+		height: 30px;
+	}
+
+	.num img {
+		height: 100%;
+	}
+
 	.label {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		text-transform: uppercase;
 	}
 
 	.years {
