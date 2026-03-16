@@ -118,17 +118,16 @@
 		</div>
 	</div>
 	<div class="landing">
+		<div class="context">
+			{@html copy.landing.context}
+		</div>
 		<div class="intros">
-			{#each ["minji", "eunice"] as name}
+			{#each ["eunice", "minji"] as name}
 				<div class="intro">
 					<div class="img"></div>
 					<div class="caption">Hi, I'm {_.startCase(name)}!</div>
 				</div>
 			{/each}
-		</div>
-
-		<div class="context">
-			{@html copy.landing.context}
 		</div>
 	</div>
 </section>
@@ -146,7 +145,9 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 		width: 100%;
+		height: 100svh;
 		margin: 0 auto;
 	}
 
@@ -160,7 +161,6 @@
 	}
 
 	.landing {
-		height: calc(100svh - 4rem);
 		gap: 3rem;
 		display: flex;
 		flex-direction: column;
@@ -293,15 +293,16 @@
 
 	.img {
 		border: 2px solid black;
+		border-radius: var(--border-radius);
 		height: 200px;
 		width: 200px;
 	}
 
 	.context {
-		max-width: 600px;
+		max-width: 800px;
 		margin: 0 auto;
 		text-align: center;
-		font-size: var(--18px);
+		font-size: var(--24px);
 	}
 
 	.byline {
@@ -341,7 +342,7 @@
 		}
 
 		.context {
-			font-size: var(--16px);
+			font-size: var(--20px);
 		}
 	}
 
