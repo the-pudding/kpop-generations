@@ -257,6 +257,15 @@
 		.years {
 			font-size: var(--12px);
 		}
+
+		.num-wrapper {
+			height: 20vw;
+			width: 20vw;
+		}
+
+		.num-wrapper .sparkle {
+			height: 3vw;
+		}
 	}
 
 	@media (max-width: 400px) {

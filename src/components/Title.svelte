@@ -11,7 +11,27 @@
 	import mostInView from "$actions/mostInView.js";
 
 
-	onMount(() => {
+	onMount(async () => {
+		const section = document.querySelector('#title');
+		const images = Array.from(section.querySelectorAll('img'));
+
+		// 1. Create a promise for every image to load and decode
+		const imageLoadPromises = images.map(img => {
+			if (img.complete) return Promise.resolve();
+			return new Promise((resolve) => {
+				img.onload = resolve;
+				img.onerror = resolve; // Continue even if one fails
+			});
+		});
+
+		// 2. Wait for all images
+		await Promise.all(imageLoadPromises);
+
+		// 3. Now run your existing animation logic
+		startAnimations();
+	});
+
+	function startAnimations() {
 		let targetLetters = selectAll("#title .img-wrapper .letter");
 		let targetBubbles = selectAll("#title .bubble-wrapper .bubble");
 		let targetSparkle = selectAll("#title .img-wrapper .sparkle");
@@ -61,7 +81,7 @@
 			.styleTween("transform", () => 
 				interpolateString("translate(-50%, -50%) scale(0)", "translate(-50%, -50%) scale(1)")
 			);
-	});
+	};
 
 	function animateStars(stars) {
 		stars
@@ -221,19 +241,23 @@
 		height: 100%; 
 		width: auto;       
 		object-fit: contain;
-		margin: 0 -3vw;
+		margin: 0 clamp(-50px, -3vw, 0px);
 		z-index: 1000;
 		box-sizing: border-box;
 		position: relative;
 	}
 
 	#group-1 {
-		margin: 0 -3vw 0 -5vw;
+		margin: 0 clamp(-50px, -3vw, 0px) 0 clamp(-70px, -5vw, 0px);
 		z-index: 999;
 	}
 
 	#group-3 .letter {
 		z-index: 999;
+	}
+
+	.letter, .bubble, .sparkle {
+		opacity: 0;
 	}
 
 	.letter {
@@ -242,7 +266,7 @@
 
 	.sparkle {
 		position: absolute;
-		width: 3vw;
+		width: clamp(10px, 3vw, 30px);
 		filter: blur(1px);
 	}
 

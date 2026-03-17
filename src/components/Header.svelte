@@ -37,7 +37,7 @@
 							<img src="assets/img/{id}/num.png" alt="number for {id}"/>
 						</div>
 						<div class="label">
-							<div>{numEnd} gen</div>
+							<p>{numEnd} gen</p>
 							<!-- <div class="years">{years}</div> -->
 						</div>
 					</button>
@@ -117,7 +117,7 @@
 		display: flex;
 		align-items: center;
 		font-weight: bold;
-		gap: 0;
+		gap: 4px;
 		opacity: 0.4;
 		transition: opacity calc(var(--1s) * 0.3);
 	}
@@ -132,17 +132,23 @@
 
 	.num {
 		height: 30px;
+		display: flex;
+    	align-items: center;
 	}
 
 	.num img {
 		height: 100%;
-	}
+		width: auto;
+		display: block;
+		object-fit: contain;
+		}
 
 	.label {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		text-transform: uppercase;
+		text-align: left;
 	}
 
 	.years {
@@ -185,6 +191,10 @@
 
 		nav {
 			margin: 0;
+		}
+
+		nav ul {
+			gap: 0.5rem;
 		}
 
 		li {
