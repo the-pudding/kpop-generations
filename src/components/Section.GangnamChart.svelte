@@ -138,17 +138,17 @@
 				/>
 
 				{#if highlight}
-					<rect
+					<!-- <rect
 						class="bg"
 						x={x(s.points[Math.floor(s.points.length / f)].date)}
 						y={y(s.points[Math.floor(s.points.length / f)].cumViews)}
 						width={rectWidth}
 						height={rectHeight}
-					/>
+					/> -->
 					<text
 						class="highlight-label"
 						x={x(s.points[Math.floor(s.points.length / f)].date)}
-						y={y(s.points[Math.floor(s.points.length / f)].cumViews)}
+						y={y(s.points[Math.floor(s.points.length / f)].cumViews) - 8}
 						transform={`rotate(279 ${x(s.points[Math.floor(s.points.length / f)].date)} ${y(s.points[Math.floor(s.points.length / f)].cumViews)})`}
 						>{s.video_title === "Gangam Style"
 							? "Gangnam Style"

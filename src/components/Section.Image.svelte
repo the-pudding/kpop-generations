@@ -17,6 +17,10 @@
 	const insetShadows = boxShadows
 		.filter((d) => d.startsWith("inset"))
 		.join(", ");
+
+	$effect(() => {
+		console.log(registerNode, alt, src)
+	})
 </script>
 
 <div
