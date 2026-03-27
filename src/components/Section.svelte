@@ -245,6 +245,12 @@
 		}
 	}
 
+	@media (max-width: 800px) {
+		h2 {
+			font-size: 64px;
+		}
+	}
+
 	@media (max-width: 600px) {
 		section {
 			padding: 3rem 2rem;

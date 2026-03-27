@@ -83,6 +83,7 @@
 		width: calc(100% - var(--speaker-overhang));
 		max-width: 666px;
 		position: relative;
+		z-index: 1000;
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
