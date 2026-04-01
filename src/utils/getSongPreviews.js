@@ -25,7 +25,8 @@ const songs = [
 	{ track: "Dynamite", artist: "BTS" },
 	{ track: "How You Like That", artist: "BLACKPINK" },
 	{ track: "Golden", artist: "HUNTR/X" },
-	{ track: "Magnetic", artist: "ILLIT" }
+	{ track: "Magnetic", artist: "ILLIT" },
+	{ track: "Savage", artist: "aespa" }
 ];
 
 const getPreviews = async () => {
