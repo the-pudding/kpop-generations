@@ -2,25 +2,21 @@
 	import _ from "lodash";
 	import data from "$data/concerts.csv";
 	import LineChart from "$components/helpers/LineChart.svelte";
-	import losAngelesSvg from "$svg/maps/los-angeles.svg";
-	import chicagoSvg from "$svg/maps/chicago.svg";
-	import newYorkCitySvg from "$svg/maps/new-york-city.svg";
-	import atlantaSvg from "$svg/maps/atlanta.svg";
-	import dallasFortWorthSvg from "$svg/maps/dallas-fort-worth.svg";
 
 	let { title } = $props();
 
-	const marketsData = [
-		{ city: "Los Angeles", concerts: 198, svg: losAngelesSvg },
-		{ city: "Chicago", concerts: 154, svg: chicagoSvg },
-		{ city: "New York City", concerts: 146, svg: newYorkCitySvg },
-		{ city: "Atlanta", concerts: 129, svg: atlantaSvg },
-		{ city: "Dallas/Fort Worth", concerts: 107, svg: dallasFortWorthSvg }
+	const emergingData = [
+		{ city: "Seattle", increase: "1,250", svg: "seattleSvg" },
+		{ city: "Oakland", increase: "1,200", svg: "oaklandSvg" },
+		{ city: "Washington DC", increase: "1,150", svg: "washingtonDCSvg" },
+		{ city: "Phoenix", increase: "900", svg: "phoenixSvg" },
+		{ city: "Boston", increase: "800", svg: "bostonSvg" },
+		{ city: "Orlando", increase: "600", svg: "orlandoSvg" },
 	];
 
 	const cleaned = data.map((d) => ({
-		year: +d.Year,
-		usConcerts: +d["US Concerts"]
+		year: +d.year,
+		usConcerts: +d["concerts"]
 	}));
 </script>
 
@@ -29,14 +25,14 @@
 	<LineChart data={cleaned} xKey="year" yKey="usConcerts" stroke="white" />
 </div>
 <div class="markets">
-	<h4>Top markets</h4>
+	<h4>Emerging markets</h4>
 
 	<div class="maps">
-		{#each marketsData as { city, concerts, svg }}
+		{#each emergingData as { city, increase, svg }}
 			{@const id = _.kebabCase(city)}
 			<div class="map">
-				{@html svg}
-				<div class="num">{concerts} shows</div>
+				<img src="assets/img/fourth-gen/maps/{svg}.png" alt="us map with a proportional dot over {city} representing a {increase}% increase in concerts"/>
+				<div class="num">+{increase}%</div>
 				<div class="city">{city}</div>
 			</div>
 		{/each}
@@ -59,6 +55,7 @@
 	.markets {
 		align-self: start;
 		width: 100%;
+		margin-top: 2rem;
 	}
 
 	.maps {
@@ -69,7 +66,7 @@
 	}
 
 	.map {
-		flex: 0 0 100px;
+		width: 14%;
 		font-size: var(--14px);
 		display: flex;
 		flex-direction: column;
@@ -86,6 +83,12 @@
 	.city {
 		font-weight: bold;
 		text-align: center;
+	}
+
+	@media (max-width: 700px) {
+		.map {
+			width: 30%;
+		}
 	}
 
 	@media (max-width: 600px) {
