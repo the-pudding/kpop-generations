@@ -121,10 +121,6 @@
 		{@html titleSvg}
 	</div> -->
 	<div class="inset">
-		<div class="illo-group">
-				<img class="illo" alt="illustration of author eunice" src="assets/img/title/eunice.jpg" />
-				<img class="illo" alt="illustration of author minji" src="assets/img/title/minji.jpg" />
-			</div>
 		<div class="bubble-wrapper">
 			<img class="bubble" alt="text bubbel: with" src="assets/img/title/with.png" />
 			<img class="bubble" alt="text bubble: growing up" src="assets/img/title/growing-up.png" />
@@ -141,24 +137,24 @@
 			{/each}
 		</div>
 	</div>
-	<!-- <div class="landing">
+	<div class="landing">
 		<div class="context">
 			{@html copy.landing.context}
 		</div>
 		<div class="intros">
 			{#each ["eunice", "minji"] as name}
 				<div class="intro">
-					<div class="img"></div>
+					<img class="img" alt="photo of {name}" src={`assets/img/title/${name}.jpg`} />
 					<div class="caption">Hi, I'm {_.startCase(name)}!</div>
 				</div>
 			{/each}
 		</div>
-	</div> -->
+	</div>
 </section>
 
 <style>
 	#title {
-		padding: 8rem 1rem 1rem 1rem;
+		padding: 4rem 1rem;
 		background: linear-gradient(
 			to bottom,
 			#f6f5ff,
@@ -171,13 +167,13 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		aspect-ratio: 2.25/1;
+		height: auto;
 		margin: 0 auto;
 	}
 
 	.inset {
 		width: 100%;
-		height: 100%;
+		aspect-ratio: 2.5/1;
 		max-width: 1000px;
 		position: relative;
 	}
@@ -196,7 +192,7 @@
 		margin: 5rem auto;
 	}
 
-	.img-wrapper, .bubble-wrapper, .illo-group {
+	.img-wrapper, .bubble-wrapper {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -238,40 +234,18 @@
 		left: 38%;    
 	}
 
-	.illo-group img {
-		position: absolute;
-		flex: 0 0 auto;
-		width: calc(100% / 7);
-		aspect-ratio: 1/1;
-		object-fit: cover;
-		border: 2px solid var(--border);
-		border-radius: var(--border-radius);
-	}
-
-	.illo-group img:first-of-type {
-		top: -2%;
-		left: 6%;
-		transform: rotate(-5deg);
-	}
-
-	.illo-group img:last-of-type {
-		bottom: -2%;
-		right: 8%;
-		transform: rotate(3deg);
-	}
-
 	.letter-group {
 		flex: 0 0 auto;
-		width: calc(100% / 5);
+		width: calc(100% / 4);
 		object-fit: contain;
-		margin: 0 -3%;
+		margin: 0 -4%;
 		z-index: 1000;
 		box-sizing: border-box;
 		position: relative;
 	}
 
 	#group-1 {
-		margin: 0 -5% 0 -7%;
+		margin: 0 -6% 0 -8%;
 		z-index: 999;
 	}
 
@@ -341,8 +315,8 @@
 	.img {
 		border: 2px solid black;
 		border-radius: var(--border-radius);
-		height: 200px;
-		width: 200px;
+		height: 160px;
+		width: 160px;
 	}
 
 	.context {
