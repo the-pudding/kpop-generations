@@ -22,7 +22,7 @@
 	<div class="cover"
 		use:inView
 		onenter={handleEnter}>
-		<img src={`assets/img/${id}/cover.png`} alt={coverAlt} />
+		<img src={`assets/img/${id}/cover.jpg`} alt={coverAlt} />
 		<div class="num-wrapper" class:animate={visible}>
 			<img class="num" src={`assets/img/${id}/num.png`} alt="number for {id}" />
 			<img class="sparkle" src={`assets/img/title/Star1.png`} alt="sparkle" />
