@@ -138,16 +138,16 @@
 		</div>
 	</div>
 	<div class="landing">
-		<div class="context">
+			<div class="intros">
+				{#each ["eunice", "minji"] as name}
+					<div class="intro">
+						<img class="img" alt="photo of {name}" src={`assets/img/title/${name}.jpg`} />
+						<div class="caption">Hi, I'm {_.startCase(name)}!</div>
+					</div>
+				{/each}
+			</div>
+			<div class="context">
 			{@html copy.landing.context}
-		</div>
-		<div class="intros">
-			{#each ["eunice", "minji"] as name}
-				<div class="intro">
-					<img class="img" alt="photo of {name}" src={`assets/img/title/${name}.jpg`} />
-					<div class="caption">Hi, I'm {_.startCase(name)}!</div>
-				</div>
-			{/each}
 		</div>
 	</div>
 </section>

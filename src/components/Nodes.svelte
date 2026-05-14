@@ -165,7 +165,8 @@
 	</svg>
 	{#each nodes as { type, value }, i}
 		{@const C = components[type]}
-		<C sectionId={id} nodeId={`${id}-${i}`} {...value} />
+		{@const isFirstSpeaker = value.speaker !== undefined && nodes.findIndex(n => n.value?.speaker === value.speaker) === i}
+		<C sectionId={id} nodeId={`${id}-${i}`} isFirstSpeaker={isFirstSpeaker} {...value} />
 	{/each}
 </div>
 

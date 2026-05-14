@@ -4,7 +4,7 @@
 	import { getContext, onMount } from "svelte";
 	import inView from "$actions/inView.js";
 
-	let { sectionId, nodeId, speaker, text, song } = $props();
+	let { sectionId, nodeId, speaker, text, song, isFirstSpeaker = false } = $props();
 	const { registerNode } = getContext("nodeRegistry");
 
 	let el;
@@ -16,6 +16,7 @@
 
 	onMount(() => {
 		registerNode(nodeId, el);
+		console.log(nodeId)
 	});
 </script>
 
@@ -33,6 +34,9 @@
 		onenter={handleEnter}
 	>
 		<div class="speaker">
+			{#if isFirstSpeaker}
+				<img src={`assets/img/title/${speaker}.jpg`} />
+			{/if}
 			{speaker}
 		</div>
 
@@ -161,7 +165,7 @@
 	.left .speaker {
 		left: 0;
 		right: auto;
-		transform: translate(calc(-1 * var(--speaker-overhang)), -50%) translateZ(0);
+		transform: translate(calc(-1 * var(--speaker-overhang)), -60%) translateZ(0);
 		background: var(--eunice-text-bg, var(--text-bg));
 		border: 2px solid var(--eunice-border, var(--border));
 		box-shadow: var(--eunice-box-shadow, var(--box-shadow));
@@ -174,6 +178,11 @@
 		background: var(--minji-text-bg, var(--text-bg));
 		border: 2px solid var(--minji-border, var(--border));
 		box-shadow: var(--minji-box-shadow, var(--box-shadow));
+	}
+
+	.speaker img {
+		max-width: 60px;
+		border-radius: calc(var(--border-radius) / 2);
 	}
 
 	:global(#third-gen .content .left .speaker) {
