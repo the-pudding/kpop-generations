@@ -43,7 +43,7 @@
 
 <div id={nodeId} class="images-container">
 	{#each images as { src, alt, shape, style, link }, i}
-		<div class="image-wrapper" {style} bind:this={els[i]}>
+		<div class="image-wrapper" {style} bind:this={els[i]} class:final-wrapper={shape === "final"}>
 			{#if src.includes("mp4")}
 				<video
 					autoplay={true}
@@ -58,7 +58,8 @@
 					class:rectangle={shape === "rectangle"}
 					class:circle={shape === "circle"}
 					class:oval={shape === "oval"}
-					style:transform={`rotate(${Math.random() * 8 - 4}deg)`}
+					class:final={shape === "final"}
+					style:transform={shape !== "final" ? `rotate(${Math.random() * 8 - 4}deg)` : 0}
 					src={hasLoaded ? `assets/img/${sectionId}/${src}` : undefined}
 					{alt}
 				/>
@@ -83,6 +84,16 @@
 		max-width: 250px;
 	}
 
+	.final-wrapper {
+		flex: 1 1;
+		max-width: 842px;
+	}
+
+	.final-wrapper img {
+		width: 100%;
+		height: auto;
+	}
+
 	img,
 	video {
 		border: 2px solid var(--border);
@@ -90,6 +101,10 @@
 
 	.rectangle,
 	video {
+		border-radius: var(--border-radius);
+	}
+
+	.final {
 		border-radius: var(--border-radius);
 	}
 
