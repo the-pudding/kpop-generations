@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from "svelte";
 	import { shuffle } from "d3";
-	import wordmark from "$svg/wordmark-sticker.svg";
+	import wordmarkFooter from "$svg/wordmark_script_stacked_sticker_footer.svg";
 	import linkOutArrow from "$svg/arrow-up-right.svg";
 	import Story from "$components/Footer.Story.svelte";
 
@@ -139,7 +139,7 @@
 					href="https://pudding.cool"
 					aria-label="The Pudding"
 				>
-					<span class="wordmark">{@html wordmark}</span>
+					<span class="wordmark">{@html wordmarkFooter}</span>
 				</a>
 				<div class="inner">
 					<div class="about">
@@ -349,8 +349,9 @@
 
 	.wordmark {
 		transform: rotate(var(--left-tilt, -2deg));
-		max-width: 360px;
+		max-width: 320px;
 		transition: transform calc(var(--1s) * 0.25);
+		display: inline-block !important;
 	}
 
 	.wordmark:hover {

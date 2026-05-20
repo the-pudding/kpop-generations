@@ -2,7 +2,7 @@
 	import _ from "lodash";
 	import { prefersReducedMotion } from "svelte/motion";
 	import copy from "$data/copy.json";
-	import wordmark from "$svg/wordmark-bubble.svg";
+	import wordmark from "$svg/wordmark_script_stacked_sticker.svg";
 	import { current } from "$runes/misc.svelte.js";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 	let dimensions = new useWindowDimensions();
@@ -18,8 +18,8 @@
 
 <header>
 	<div
-		class="wordmark"
-		class:visible={current.section === "title" || dimensions.width > 700}
+		class="wordmark-header"
+		class:visible={current.section === "title"}
 	>
 		<a href="https://pudding.cool" aria-label="The Pudding" target="_self"
 			>{@html wordmark}</a
@@ -67,26 +67,34 @@
 		);
 	}
 
-	.wordmark {
-		height: 80%;
-		width: fit-content;
-		transform: rotate(-4deg);
-		display: none;
-	}
-
-	.wordmark.visible {
+	.wordmark-header.visible {
 		display: block;
 	}
 
-	.wordmark a {
+	.wordmark-header a {
 		height: 100%;
 		border: none;
 		display: block;
 		color: var(--color-fg);
+		transition: transform calc(var(--1s) * 0.25) rotate(var(--left-tilt, -2deg));
 	}
 
-	.wordmark a:hover {
-		background-color: transparent;
+	.wordmark-header a:hover {
+		transform: rotate(0) scale(1.05);
+	}
+
+	.wordmark-header {
+		width: 100px;
+		transform: rotate(-4deg);
+		display: block;
+		padding-top: 0.5rem;
+		transform: rotate(var(--left-tilt, -2deg));
+		max-width: 320px;
+		transition: transform calc(var(--1s) * 0.25);
+	}
+
+	.wordmark-header:hover {
+		transform: rotate(0) scale(1.05);
 	}
 
 	nav {
@@ -187,6 +195,10 @@
 	@media (max-width: 700px) {
 		header {
 			justify-content: center;
+		}
+
+		.wordmark-header {
+			display: none;
 		}
 
 		nav {
