@@ -146,9 +146,9 @@
 					</div>
 				{/each}
 			</div>
-			<div class="context">
+			<!-- <div class="context">
 			{@html copy.landing.context}
-		</div>
+		</div> -->
 	</div>
 </section>
 
