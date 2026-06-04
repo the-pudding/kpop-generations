@@ -4,19 +4,25 @@
 	import { getContext, onMount } from "svelte";
 	import inView from "$actions/inView.js";
 
-	let { sectionId, nodeId, speaker, text, song, isFirstSpeaker = false } = $props();
+	let {
+		sectionId,
+		nodeId,
+		speaker,
+		text,
+		song,
+		isFirstSpeaker = false
+	} = $props();
 	const { registerNode } = getContext("nodeRegistry");
 
 	let el;
 	let visible = $state(false);
 
 	function handleEnter() {
-        visible = true;
-    }
+		visible = true;
+	}
 
 	onMount(() => {
 		registerNode(nodeId, el);
-		console.log(nodeId)
 	});
 </script>
 
@@ -91,32 +97,35 @@
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
-        .text-block {
+		.text-block {
 			opacity: 0;
-            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease-out;
-            transition-property: transform, opacity !important;
-            will-change: transform, opacity;
-        }
+			transition:
+				transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+				opacity 0.6s ease-out;
+			transition-property: transform, opacity !important;
+			will-change: transform, opacity;
+		}
 
-        .text-block.left {
-            transform: translateX(-30px) !important;
-        }
+		.text-block.left {
+			transform: translateX(-30px) !important;
+		}
 
-        .text-block.right {
-            transform: translateX(30px) !important;
-        }
+		.text-block.right {
+			transform: translateX(30px) !important;
+		}
 
-        .text-block.is-visible {
+		.text-block.is-visible {
 			opacity: 1;
-            transform: translateX(0) !important;
-        }
-    }
+			transform: translateX(0) !important;
+		}
+	}
 
 	@media (prefers-reduced-motion: reduce) {
-        .text-block.left, .text-block.right {
-            transform: none !important;
-        }
-    }
+		.text-block.left,
+		.text-block.right {
+			transform: none !important;
+		}
+	}
 
 	.text-block.with-margin {
 		margin: 3rem 0;
@@ -156,7 +165,7 @@
 		top: 0;
 		will-change: transform, opacity;
 		-webkit-backface-visibility: hidden;
-    	backface-visibility: hidden;
+		backface-visibility: hidden;
 		transform-style: preserve-3d;
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
@@ -195,12 +204,18 @@
 		color: #000000;
 	}
 
-	:global(#fourth-gen .content .right .speaker, #fourth-gen .content .left .speaker) {
+	:global(
+		#fourth-gen .content .right .speaker,
+		#fourth-gen .content .left .speaker
+	) {
 		color: #000000;
 	}
 
-	:global(#fifth-gen .content .right .speaker, #fifth-gen .content .left .speaker) {
-		background: rgba(255,255,255,0.8) !important;
+	:global(
+		#fifth-gen .content .right .speaker,
+		#fifth-gen .content .left .speaker
+	) {
+		background: rgba(255, 255, 255, 0.8) !important;
 		color: #000000;
 	}
 
